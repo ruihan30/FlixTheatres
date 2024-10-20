@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flix Theatres</title>
+  <meta charset="utf-8">
+	<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit:400,500,600,700">
+  <link rel="stylesheet" href="common_styles.css">
+  <link rel="icon" href="assets/flix-favicon.svg" type="image/svg">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script> 
+  <script defer src="general_script.js"></script>
+</head>
+
+<body>
+
+	<!-- Navbar -->
+	<div class="d-flex justify-content-center" style="width: 100vw; position: sticky;">
+		<nav id="navbar" class="container d-flex flex-row">
+			<div class="d-flex flex-row align-items-center nav-items">
+				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
+				<ul class="d-flex flex-row">
+					<li><a href="">All Movies</a></li>
+					<li class="active"><a href="">Cinemas</a></li>
+				</ul>
+			</div>
+			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
+		</nav>
+	</div>
+
+	<!-- Wrapper -->
+	<div class="container d-flex flex-column align-items-center" style="gap: 28px;">
+		
+		<div class="d-flex flex-row" style="height: 48px; gap: 28px; width: 780px;">
+			<h2>Flix Theatres in the area: </h2>
+			<select id="cinemasFilter">
+				<option value="">Select your area</option>
+				<option value="North">North</option>
+				<option value="South">South</option>
+				<option value="East">East</option>
+				<option value="West">West</option>
+			</select>
+		</div>
+
+		<!-- List of cinemas -->
+		<div class="d-flex flex-row cinema-card">
+			<div class="cinema-img test">img</div>
+
+			<div class="d-flex flex-column cinema-info">
+				<div class="d-flex flex-column" style="gap: 24px;">
+					<div class="d-flex flex-column" style="gap: 8px;">
+						<h3>Flix Theatres Bedok</h3>
+						<p>445 Bedok North Street 1, #04-01, Djitsun Mall Bedok, Singapore 469661</p>
+						<div class="d-flex flex-row" style="gap: 16px;"><p>6 Halls</p><p>|</p><p>Types of cinemas<p></p></div>
+					</div>
+					
+					<div class="d-flex flex-row" style="gap: 36px;">
+						<div class="d-flex flex-column" style="gap: 8px;">
+							<div class="d-flex flex-row" style="gap: 4px;">
+								<i class='bx bxs-train icon'></i><p>MRT</p>
+							</div>
+							<div class="d-flex flex-row" style="gap: 4px;">
+								<i class='bx bxs-bus icon'></i><p>Bus</p>
+							</div>
+						</div>
+						<div class="d-flex flex-column" style="gap: 8px;">
+							<p>Bedok (EW5)</p>
+							<p>7, 9, 14, 16, 17, 17A, 18, 30, 30e, 32, 33, 35, 35M, 40, 60, 66, 69, 87, 155, 168, 196, 197, 222 , 225G, 225W, 228, 229, 401, 854, 854E</p>
+						</div>
+					</div>
+				</div>
+
+				<a class="test" href="" style="align-self: end"><button class="btn-primary btn-lg">Showtimes</button></a>
+			</div>
+		</div>
+
+		
+			
+
+
+	</div>
+	
+</body>
+
+</html>
