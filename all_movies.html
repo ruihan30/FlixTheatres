@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flix Theatres</title>
+  <meta charset="utf-8">
+	<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit:400,500,600,700">
+  <link rel="stylesheet" href="common_styles.css">
+  <link rel="icon" href="assets/flix-favicon.svg" type="image/svg">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script> 
+  <script defer src="general_script.js"></script>
+</head>
+
+<body>
+
+	<!-- Navbar -->
+	<div class="d-flex justify-content-center" style="width: 100vw; position: sticky;">
+		<nav id="navbar" class="container d-flex flex-row">
+			<div class="d-flex flex-row align-items-center nav-items">
+				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
+				<ul class="d-flex flex-row">
+					<li class="active"><a href="">All Movies</a></li>
+					<li><a href="">Cinemas</a></li>
+				</ul>
+			</div>
+			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
+		</nav>
+	</div>
+
+	<!-- Choose cinema -->
+	<div class="container d-flex flex-column align-items-center" style="gap: 32px;">
+		
+		<div class="d-flex flex-row" style="height: 48px; gap: 28px; width: 780px;">
+			<h2>View available showtimes: </h2>
+			<select id="cinemasFilter">
+				<option value="">at your nearest Flix Theatre</option>
+				<option value="">Flix Theatres Jurong Point</option>
+				<option value="">South</option>
+				<option value="">East</option>
+				<option value="">West</option>
+			</select>
+		</div>
+
+		<div class="d-flex flex-row justify-content-center cinema-card-box" style="gap:20px;">
+			<div class="d-flex flex-column cinema-info-box test">
+				<div class="d-flex flex-column" style="gap: 24px;">
+					<h1 style="color: var(--bg-color-black)">Flix Theatres Jurong Point</h1>
+					<div class="d-flex flex-row" style="gap: 24px;">
+						<img src="assets/cinema-types/imax-black.svg" alt="imax">
+						<img src="assets/cinema-types/premiere-black.svg" alt="lumiere">
+						<img src="assets/cinema-types/lumiere-black.svg" alt="premiere">
+					</div>
+					<p>1 Jurong West Central, #03-26/26A, Jurong Point, Singapore 648886</p>
+				</div>
+
+				<a href="" style="align-self: end;"><button class="btn-primary btn-md" style="background-color: var(--primary-color-purple); color: var(--off-white);">Directions</button></a>
+			</div>
+
+			<div class="cinema-img test">img</div>
+			<div class="decoration-box"></div>
+		</div>
+
+	</div>
+	
+	<!-- List of movies -->
+	<div class="container d-flex flex-column" style="gap: 32px; margin-top: 40px;">
+		<div class="decorative-header"><h2>Showtimes</h2></div>
+
+		<div class="d-flex flex-column" style="gap:12px;">
+			<div class="d-flex flex-row" style="gap:12px;">
+				<button class="btn-primary btn-md">Today, 17 Sep</button>
+				<button class="btn-secondary btn-md btn-disabled">Tue</button>
+				<button class="btn-secondary btn-md btn-disabled">Wed</button>
+				<button class="btn-secondary btn-md btn-disabled">Thu</button>
+				<button class="btn-secondary btn-md btn-disabled">Fri</button>
+				<button class="btn-secondary btn-md btn-disabled">Sat</button>
+				<button class="btn-secondary btn-md btn-disabled">Sun</button>
+			</div>
+			
+			<!-- Movie List -->
+			<div id="movieList">
+				<div class="d-flex flex-column movie-card">
+					<div class="test">img</div>
+
+					<div class="d-flex flex-column movie-details">
+						<div class="d-flex flex-column" style="gap: 4px; width: 100%; flex-grow: 1;"> 
+							<p class="movie-title">Beetlejuice Beetlejuice</p>
+							<p>English (Chinese Subbed)</p>
+						</div>
+							
+						<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%;">
+							<div class="pg-rating pg13">PG13</div>
+							<p class="pg-description">Some frightening scenes & coarse language</p>
+						</div>
+
+						<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%; flex-wrap: wrap;">
+							<a href=""><button class="btn-showtime">1.30 PM</button></a>
+							<a href=""><button class="btn-showtime">4.35 PM</button></a>
+							<a href=""><button class="btn-showtime">9.25 PM</button></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="d-flex flex-column movie-card">
+					<div class="test">img</div>
+
+					<div class="d-flex flex-column movie-details">
+						<div class="d-flex flex-column" style="gap: 4px; width: 100%; flex-grow: 1;"> 
+							<p class="movie-title">Marvel Studios' Deadpool & Wolverine</p>
+							<p>English (Chinese Subbed)</p>
+						</div>
+							
+						<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%;">
+							<div class="pg-rating m18">M18</div>
+							<p class="pg-description">Violence & coarse language</p>
+						</div>
+
+						<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%; flex-wrap: wrap;">
+							<a href=""><button class="btn-showtime">2.05 PM</button></a>
+							<a href=""><button class="btn-showtime">5.05 PM</button></a>
+							<a href=""><button class="btn-showtime">7.25 PM</button></a>
+							<a href=""><button class="btn-showtime">10.00 PM</button></a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="test">test</div>
+				<div class="test">test</div>
+				<div class="test">test</div>
+				<div class="test">test</div>
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>

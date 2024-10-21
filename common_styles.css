@@ -46,6 +46,7 @@ body {
     align-items: center;
     margin: 0px;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 .container {
@@ -176,7 +177,24 @@ a {
     padding: 8px 12px;
 }
 
-.btn:hover {
+.btn-disabled {
+    border: 2px solid rgba(253, 253, 253, 0.6);
+    color: rgba(253, 253, 253, 0.6);
+}
+
+.btn-showtime {
+    background-color: var(--CTA-color-blue);
+    color: var(--off-white);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm-16);
+    padding: 4px 16px;
+    font-family: 'Outfit';
+    border: none;
+    border-radius: 36px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
     background-color: #D0D0D0;
     cursor: pointer;
 }
@@ -226,6 +244,7 @@ i {
     left: 160px;
     background: linear-gradient(0deg, rgba(28, 28, 28, 0.20) 0%, rgba(28, 28, 28, 0.20) 100%), linear-gradient(180deg, rgba(28, 28, 28, 0.00) 43.59%, rgba(28, 28, 28, 0.70) 100%);
     backdrop-filter: blur(14px);
+    box-sizing: border-box;
     padding: 28px 20px;
     gap: 24px;
     width: 320px;
@@ -313,6 +332,7 @@ h1 {
     padding: 16px 0px;
     align-items: end;
     gap: 32px;
+    flex-grow: 1;
 }
 
 .bxs-star, .bxs-star-half {
@@ -324,14 +344,62 @@ h1 {
     color: var(--off-white);
 }
 
-.pg13 {
+.g, .pg13, .pg{
     background-color: var(--PG-green);
+}
+
+.m18, .nc16 , .R21{
+    background-color: var(--PG-orange);
 }
 
 .pg-description {
     font-size: var(--font-size-xs-14);
 }
 
+/* All Movies Page */
+
+.cinema-card-box {
+    color: var(--secondary-onwhite-text-color);
+    position: relative;
+}
+
+.cinema-info-box {
+    width: 380px;
+    height: 380px;
+    box-sizing: border-box;
+    padding: 28px;
+    justify-content: space-between;
+    background-color: var(--off-white);
+}
+
+.decoration-box {
+    width: 380px;
+    height: 380px;
+    position: absolute;
+    left: -16px;
+    top: -16px;
+    border: 2px solid var(--off-white);
+    z-index: -1;
+}
+
+.decorative-header {
+    padding: 0px 0px 8px 0px;
+    margin: 0px;
+    border-bottom: 2px solid var(--off-white);
+    width: 290px;
+}
+
+/* Showtime Page */
+
+.movie-details-box {
+    width: 520px;
+    height: 520px;
+    box-sizing: border-box;
+    gap: 20px;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    color: var(--secondary-onblack-text-color);
+}
 
 /* Cinemas Page */
 
@@ -339,6 +407,7 @@ h2 {
     font-size: var(--font-size-xl-28);
     font-weight: var(--font-weight-medium);
     align-self: center;
+    margin: 0px;
 }
 
 #cinemasFilter {
@@ -346,7 +415,7 @@ h2 {
     border: none;
     background-color: var(--off-white);
     font-family: 'Outfit';
-    font-size: var(--font-size-xl-18);
+    font-size: var(--font-size-sm-md-18);
     font-weight: var(--font-weight-medium);
     appearance: none;
     flex-grow: 1;
@@ -387,6 +456,7 @@ footer {
     width: 100vw;
     display: flex;
     justify-content: center;
+    margin-top: auto;
 }
 
 .footer-wrapper {
@@ -398,7 +468,7 @@ footer {
 
 .footer-header {
     color: var(--off-white);
-    font-size: var(--font-size-xl-18);
+    font-size: var(--font-size-sm-md-18);
 }
 
 .footer-links {
