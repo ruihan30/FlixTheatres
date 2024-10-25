@@ -14,76 +14,51 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(raf);
 });
 
+// Navbar
+document.addEventListener("scroll", function() {
 
-// Carousel 
+	const navbar = document.getElementsByClassName("navbar-wrapper")[0];
+	const scrollHeight = 20;
 
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(track.children);
-const nextButton = document.getElementById('nextButton');
-const prevButton = document.getElementById('prevButton');
-let currentIndex = 0;
+	if (window.scrollY > scrollHeight) {
+			navbar.classList.add("scrolled");
+	} else {
+			navbar.classList.remove("scrolled");
+	}
+	
+});
 
-// Update the slide position
-function updateSlidePosition() {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+// Cinema seating
+document.addEventListener('DOMContentLoaded', () => {
+	const rows = 7;
+	const columns = 9;
+	const container = document.getElementById('cinema-seating');
+	const seatSrc = 'assets/cinema-seating/available-seat.svg';
 
-    if (currentIndex === 0) {
-        prevButton.style.display = 'none';
-    } else {
-        prevButton.style.display = 'block';
-    }
+	if(container) {
+		for (let i = 0; i < rows; i++) {
+				for (let j = 0; j < columns; j++) {
+						const seat = document.createElement('img');
+						seat.classList.add('seat');
+						seat.src = seatSrc;
+						container.appendChild(seat);
+				}
+		}
+	} else {
+		console.error('Cinema seating container not found');
+	}
+});
 
-    if (currentIndex === slides.length - 1) {
-        nextButton.style.display = 'none';
-    } else {
-        nextButton.style.display = 'block';
-    }
+function decreaseValue(field_id) {
+	const numberField = document.getElementById(field_id);
+	const currentValue = parseInt(numberField.value) || 0;
+	if (currentValue > 0) {
+			numberField.value = currentValue - 1;
+	}
 }
 
-// Move to the next slide
-nextButton.addEventListener('click', () => {
-    if (currentIndex < slides.length - 1) {
-        currentIndex++;
-    } else {
-        currentIndex = 0;
-    }
-    updateSlidePosition();
-});
-
-// // Auto-scroll functionality
-// function autoScroll() {
-//     if (currentIndex < slides.length - 1) {
-//         currentIndex++;
-//     } else {
-//         currentIndex = 0; // Loop back to the first slide
-//     }
-//     updateSlidePosition();
-// }
-
-// // Start auto-scrolling every 3 seconds
-// let autoScrollInterval = setInterval(autoScroll, 3000);
-
-// // Pause auto-scrolling when hovering over the carousel
-// track.addEventListener('mouseenter', () => {
-//     clearInterval(autoScrollInterval);
-// });
-
-// // Resume auto-scrolling when not hovering over the carousel
-// track.addEventListener('mouseleave', () => {
-//     autoScrollInterval = setInterval(autoScroll, 3000);
-// });
-
-// Move to the previous slide
-prevButton.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-    } else {
-        currentIndex = slides.length - 1;
-    }
-    updateSlidePosition();
-});
-
-// Initial slide setup
-window.addEventListener('resize', updateSlidePosition);
-updateSlidePosition();
+function increaseValue(field_id) {
+	const numberField = document.getElementById(field_id);
+	const currentValue = parseInt(numberField.value) || 0;
+	numberField.value = currentValue + 1;
+}
