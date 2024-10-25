@@ -32,26 +32,46 @@
 	</div>
 
 	<!-- Carousel -->
-	<div class="carousel">
+	<?php include 'php_files/get_carousel.php'; ?>
+	
+	<!-- <div class="carousel">
 		<div class="carousel-track-container">
 			<ul class="carousel-track">
 				<li class="carousel-slide current-slide">
-						<img src="assets/testbanner1.png" alt="Image 1">
-						<div class="d-flex flex-column justify-content-center carousel-info">
-							<h1>Dune</h1>
-							<div class="d-flex flex-row" style="gap: 12px; flex-wrap: wrap;">
-								<p><span>Sci-Fi</span> | <span>Adventure</span></p>
-								<p>•</p>
-								<p>2h 35min</p>
-							</div>
-							<div class="d-flex flex-row align-items-center" style="justify-content: space-between; padding: 0px 8px;">
-								<div class="d-flex flex-row align-items-center" style="gap: 16px;"><i class='bx bx-play icon'></i>Trailer</div>
-								<button class="btn-primary btn-md">Showtimes</button>
-							</div>
+					<div class="carousel-overlay-y"></div>
+					<div class="carousel-overlay-x1"></div>
+					<div class="carousel-overlay-x2"></div>
+					<img src="assets/testbanner1.png" alt="Image 1">
+					<div class="d-flex flex-column justify-content-center carousel-info">
+						<h1>Dune</h1>
+						<div class="d-flex flex-row" style="gap: 12px; flex-wrap: wrap;">
+							<p><span>Sci-Fi</span> | <span>Adventure</span></p>
+							<p>•</p>
+							<p>2h 35min</p>
 						</div>
+						<div class="d-flex flex-row align-items-center" style="justify-content: space-between; padding: 0px 8px;">
+							<a href=""><div class="d-flex flex-row align-items-center" style="gap: 16px;"><i class='bx bx-play icon'></i>Trailer</div></a>
+							<button class="btn-primary btn-md">Showtimes</button>
+						</div>
+					</div>
 				</li>
 				<li class="carousel-slide">
-						<img src="assets/testbanner2.png" alt="Image 2">
+					<div class="carousel-overlay-y"></div>
+					<div class="carousel-overlay-x1"></div>
+					<div class="carousel-overlay-x2"></div>
+					<img src="assets/testbanner2.png" alt="Image 2">
+					<div class="d-flex flex-column justify-content-center carousel-info">
+						<h1>Dune</h1>
+						<div class="d-flex flex-row" style="gap: 12px; flex-wrap: wrap;">
+							<p><span>Sci-Fi</span> | <span>Adventure</span></p>
+							<p>•</p>
+							<p>2h 35min</p>
+						</div>
+						<div class="d-flex flex-row align-items-center" style="justify-content: space-between; padding: 0px 8px;">
+							<a href=""><div class="d-flex flex-row align-items-center" style="gap: 16px;"><i class='bx bx-play icon'></i>Trailer</div></a>
+							<button class="btn-primary btn-md">Showtimes</button>
+						</div>
+					</div>
 				</li>
 				<li class="carousel-slide">
 						<img src="assets/testbanner3.png" alt="Image 3">
@@ -60,13 +80,10 @@
 		</div>
 		<button class="carousel-button" id="prevButton" style="left: 10px;"><i class='bx bxs-chevron-left icon'></i></button>
 		<button class="carousel-button" id="nextButton" style="right: 10px;"><i class='bx bxs-chevron-right icon'></i></button>
-		<div class="carousel-overlay-y"></div>
-		<div class="carousel-overlay-x1"></div>
-		<div class="carousel-overlay-x2"></div>
-	</div>
+	</div> -->
 
 	<!-- Wrapper -->
-	<div class="container d-flex flex-column" style="gap: 28px;">
+	<div class="container d-flex flex-column" style="gap: 28px; margin-bottom: 100px;">
 		
 		<!-- Tabs -->
 		<div class="d-flex flex-row" style="gap: 16px;">
@@ -74,8 +91,12 @@
 			<button class="btn-secondary btn-lg">Coming Soon</button>
 		</div>
 
-		<!-- Movie List -->
-		<div id="movieList">
+		<!-- Get movies list from database -->
+		<?php include 'php_files/get_movies.php'; ?>
+
+		<!-- Movie List
+		<div id="movieList" >
+
 			<div class="d-flex flex-column movie-card">
 				<div class="test">img</div>
 
@@ -139,7 +160,7 @@
 			<div class="test">test</div>
 			<div class="test">test</div>
 
-		</div>
+		</div> -->
 
 	</div>
 

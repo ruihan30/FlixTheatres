@@ -247,6 +247,8 @@ i {
 .carousel-slide {
     min-width: 100%;
     list-style: none;
+    background: linear-gradient(180deg, rgba(28, 28, 28, 0.00) 46.71%, #1C1C1C 100%);
+    position: relative;
 }
 
 .carousel-slide img {
@@ -266,13 +268,23 @@ i {
     box-sizing: border-box;
     padding: 28px 20px;
     gap: 24px;
-    width: 320px;
-    height: 320px;
-}
-
-.carousel-info {
+    width: 400px;
+    height: 400px;
     font-size: var(--font-size-md-20);
     color: var(--secondary-onblack-text-color);
+    z-index: 4;
+}
+
+.carousel-info a{
+    color: var(--secondary-onblack-text-color);
+}
+
+.carousel-info a:hover{
+    color: var(--off-white);
+}
+
+.carousel-info a:hover .bx-play{
+    outline: var(--off-white) solid 2px;
 }
 
 h1 {
@@ -339,6 +351,13 @@ h1 {
 
 .movie-card {
     color: var(--secondary-onblack-text-color);
+    overflow: hidden;
+}
+
+.movie-card-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .movie-title {
@@ -354,7 +373,7 @@ h1 {
     flex-grow: 1;
 }
 
-.bxs-star, .bxs-star-half {
+.bxs-star, .bxs-star-half, .bx-star{
     color: #FFC107;
 }
 

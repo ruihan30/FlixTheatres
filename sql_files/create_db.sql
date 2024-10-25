@@ -17,7 +17,8 @@ CREATE TABLE movies (
     genre1 VARCHAR(50) NOT NULL,
     genre2 VARCHAR(50),
     director VARCHAR(100) NOT NULL,
-    casts VARCHAR(500)
+    casts VARCHAR(500),
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE cinema_halls (
