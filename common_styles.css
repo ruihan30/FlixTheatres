@@ -113,9 +113,28 @@ pointer-events: none;
 
 /* Navbar */
 
+.navbar-wrapper {
+    width: 100vw; 
+    position: sticky; 
+    padding: 0px; 
+    top: 0px; 
+    z-index: 4;
+    background-color: var(--bg-color-black);
+    transition: box-shadow 0.3s ease;
+}
+
+.navbar-wrapper.scrolled {
+    box-shadow: rgba(155, 81, 224, 0.4) 0px 5px, 
+            rgba(155, 81, 224, 0.3) 0px 10px, 
+            rgba(155, 81, 224, 0.2) 0px 15px, 
+            rgba(155, 81, 224, 0.1) 0px 20px, 
+            rgba(155, 81, 224, 0.05) 0px 25px;
+}
+
 #navbar {
-    padding: 16px 20px;
+    padding: 10px 20px;
     justify-content: space-between;
+
 }
 
 nav ul li{
@@ -571,6 +590,23 @@ h3 {
 .number-field::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+}
+
+.line {
+    border-top: 2px solid var(--border-color);
+    width: 70%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    height: 1px;
 }
 
 /* Footer */

@@ -31,13 +31,31 @@
 	</div>
 
 	<!-- Movie Details -->
-	<div class="container d-flex flex-row" style="gap: 20px;">
+	<div class="container d-flex flex-row" style="gap: 20px; margin: 20px 0px 72px 0px;">
 		<!-- Maybe session for timing and all the data to navigate between steps -->
 		<!-- Left -->
 		<div class="test" style="width: calc(33% - 20px);">timer, movie poster</div>
 
 		<!-- Right -->
 		<div class="d-flex flex-column" style="gap: 48px; flex-grow: 1;">
+
+			<!-- Steps -->
+			<div class="steps">
+				<div class="d-flex flex-column align-items-center" style="gap: 12px;">
+					<div class="number-field d-flex align-items-center justify-content-center" style="background-color: var(--off-white); color: var(--bg-color-black)">1</div>
+					<p>Choose your seats & add-ons</p>
+				</div>
+				<div class="d-flex flex-column align-items-center" style="gap: 12px;">
+					<div class="number-field d-flex align-items-center justify-content-center" style="background-color: var(--bg-color-black); border: 1px solid var(--off-white);">2</div>
+					<p>Confirm details</p>
+				</div>
+				<div class="d-flex flex-column align-items-center" style="gap: 12px;">
+					<div class="number-field d-flex align-items-center justify-content-center" style="background-color: var(--bg-color-black); border: 1px solid var(--off-white);">3</div>
+					<p>Complete Payment</p>
+				</div>
+				<div class="line"></div>
+			</div>
+
 			<!-- Movie details -->
 			<div class="d-flex flex-column" style="gap: 36px; padding: 28px; border: 1px solid var(--border-color);">
 				<h1>Beetlejuice Beetlejuice</h1>
@@ -156,7 +174,10 @@
 			</div>
 
 			<!-- Buttons -->
-			<div></div>
+			<div class="d-flex flex-row" style="gap: 16px;">
+				<a href="" style="width: 100%;"><button class="d-flex flex-row btn-primary btn-lg justify-content-center" style="background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;"
+					>Next Step<i class='bx bx-right-arrow-circle icon' style="font-size: 24px;"></i></button></a>
+			</div>
 		</div>
 
 	</div>
