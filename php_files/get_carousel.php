@@ -12,7 +12,7 @@ if (mysqli_connect_errno()) {
 $query = 'SELECT * FROM movies';
 $result = $conn->query($query);
 
-// Save SQL query result in double array according to product name and variations 
+// Save SQL query result in array
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
     $movies[] = [
@@ -61,7 +61,9 @@ foreach ($movies as $key => $movie_card) {
           <div class='d-flex flex-column justify-content-center carousel-info'>
             <h1>{$movie_card['title']}</h1>
             <div class='d-flex flex-row' style='gap: 12px; flex-wrap: wrap;'>
-              <p><span>{$movie_card['genre1']}</span> | <span>{$movie_card['genre2']}</span></p>
+              <p><span>{$movie_card['genre1']}</span>";
+                if ($movie_card['genre2']) { echo " | ";};
+                echo "<span>{$movie_card['genre2']}</span></p>
               <p>•</p>
               <p>";
                 echo calc($movie_card['duration']);
@@ -69,7 +71,7 @@ foreach ($movies as $key => $movie_card) {
             </div>
             <div class='d-flex flex-row align-items-center' style='justify-content: space-between; padding: 0px 8px;'>
               <a href='{$movie_card['trailer_link']}' target='_blank'><div class='d-flex flex-row align-items-center' style='gap: 16px;'><i class='bx bx-play icon'></i>Trailer</div></a>
-              <button class='btn-primary btn-md'>Showtimes</button>
+              <a href='showtime.php?title=". urlencode($movie_card['title']) . "'><button class='btn-primary btn-md'>Showtimes</button></a>
             </div>
           </div>
         </li>

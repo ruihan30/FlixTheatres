@@ -429,15 +429,32 @@ h1 {
 
 /* Showtime Page */
 
+.showtime-movie-poster {
+    height: 520px;
+    width: auto;
+}
+
 .showtime-movie-details {
-    width: 520px;
-    /* height: 520px; */
-    /* box-sizing: border-box; */
+    flex: 0 0 520px;
+    box-sizing: border-box;
     gap: 20px;
     border: 1px solid var(--border-color);
     padding: 24px;
     color: var(--secondary-onblack-text-color);
 }
+
+.showtime-movie-details a{
+    color: var(--secondary-onblack-text-color);
+}
+
+.showtime-movie-details a:hover{
+    color: var(--off-white);
+}
+
+.showtime-movie-details a:hover .bx-play{
+    outline: var(--off-white) solid 2px;
+}
+
 
 .showtime-movie-moreDetails {
     padding: 16px;
@@ -453,6 +470,12 @@ h1 {
 .cinema-btn {
     color: var(--bg-color-black);
     border: 1px solid var(--bg-color-black);
+}
+
+.cinema-btn.active {
+    background-color: var(--primary-color-purple);
+    color: var(--off-white);
+    border: 1px solid var(--primary-color-purple);
 }
 
 .selected-cinema {
@@ -500,6 +523,7 @@ h1 {
 .showtimes {
     gap: 8px;
     padding: 16px 4px;
+    display: none;
 }
 
 /* Cinemas Page */

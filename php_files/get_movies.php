@@ -1,4 +1,21 @@
 <?php
+  function printRating($rating) {
+    for ($i = floor($rating); $i >= 1; $i--) {
+      echo "<i class='bx bxs-star icon'></i>";
+    };
+
+    if (($rating - floor($rating)) >= 0.5) {
+      echo "<i class='bx bxs-star-half icon'></i>";
+      $remainingStars = 4 - floor($rating);
+    } else {
+      $remainingStars = 5 - floor($rating);
+    };
+
+    for ($i = 0; $i < $remainingStars; $i++) {
+      echo "<i class='bx bx-star icon'></i>";
+    }
+  };
+
   echo "<div id='movieList'>";
 
   foreach ($movies as $movie_card) {
@@ -10,26 +27,15 @@
         <div class='d-flex flex-column' style='gap: 4px; width: 100%; flex-grow: 1;'> 
           <p class='movie-title'> {$movie_card['title']} </p>
           <div class='d-flex flex-row' style='gap: 16px;'>
-            <p><span> {$movie_card['genre1']} </span> | <span> {$movie_card['genre2']} </span></p>
+            <p><span> {$movie_card['genre1']} </span>";
+              if ($movie_card['genre2']) { echo " | ";};
+            echo "<span> {$movie_card['genre2']} </span></p>
             <p>•</p>
             <p>".calc($movie_card['duration'])."</p>
           </div>
           <div class='d-flex flex-row' style='gap: 2px;'>";
 
-          for ($i = floor($movie_card['rating']); $i >= 1; $i--) {
-            echo "<i class='bx bxs-star icon'></i>";
-          };
-
-          if (($movie_card['rating'] - floor($movie_card['rating'])) >= 0.5) {
-            echo "<i class='bx bxs-star-half icon'></i>";
-            $remainingStars = 4 - floor($movie_card['rating']);
-          } else {
-            $remainingStars = 5 - floor($movie_card['rating']);
-          };
-
-          for ($i = 0; $i < $remainingStars; $i++) {
-            echo "<i class='bx bx-star icon'></i>";
-          }
+          printRating($movie_card['rating']);
 
           echo "</div>
         </div>
