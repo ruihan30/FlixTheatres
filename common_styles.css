@@ -576,6 +576,11 @@ h3 {
 
 /* Booking 1 Page */
 
+.booking_poster {
+    width: 100%;
+    height: auto;
+}
+
 .booking-input {
     flex-grow: 1;
     border: none;
@@ -590,6 +595,17 @@ h3 {
     font-weight: var(--font-weight-medium);
 }
 
+.booking-display {
+    flex-grow: 1;
+    padding: 12px 16px;
+    background-color: var(--off-white);
+    font-size: var(--font-size-sm-16);
+    font-weight: var(--font-weight-medium);
+    align-items: center;
+    justify-content: space-between;
+    color: var(--bg-color-black);
+}
+
 #cinema-seating {
     display: grid;
     grid-template-columns: repeat(9, auto);
@@ -600,6 +616,34 @@ h3 {
 .seat {
     width: 28px;
     height: 24px;
+}
+
+#price-table {
+    padding: 20px;
+    background-color: var(--off-white);
+}
+
+table {
+    color: var(--bg-color-black);
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th {
+    text-align: left;
+    font-size: var(--font-size-sm-16);
+    color: var(--secondary-onwhite-text-color);
+    font-weight: var(--font-weight-medium) ;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid var(--secondary-onwhite-text-color);
+}
+
+table td {
+    padding: 12px 0px 0px 0px;
+}
+
+table tr.disabled {
+    color: var(--secondary-onwhite-text-color);
 }
 
 .integer-btn {
@@ -650,6 +694,28 @@ h3 {
     transform: translate(-50%, -50%);
     z-index: -1;
     height: 1px;
+}
+
+/* Booking 2 page */
+
+.personal-details label {
+    width: 160px;
+    color: var(--secondary-onblack-text-color);
+    text-align: right;
+    font-size: var(--font-size-sm-md-18);
+}
+
+.personal-details div, input {
+    flex-grow: 1;
+    display: flex;
+    padding: 8px 16px;
+    font-family: 'Outfit';
+    font-size: var(--font-size-sm-md-18);
+}
+
+.personal-details div {
+    align-items: center;
+    gap: 20px;
 }
 
 /* Footer */

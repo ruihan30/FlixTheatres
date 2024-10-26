@@ -1,6 +1,5 @@
 <?php 
   $datesArray = [];
-
   $today = new DateTime();
   
   for ($i = 0; $i < 7; $i++) {
@@ -39,7 +38,9 @@
               echo "
               <div class='d-flex flex-column justify-content-center showtimes ". str_replace(' ', '_', $location_name) . "'>";
                 foreach ($showtimes as $showtime_list => $showtime) {
-                  echo "<a href=''><button class='btn-showtime'>" . formatTime($showtime['showtime']) ."</button></a>";
+                  echo "<a href='booking_1.php?title=". urlencode($title) . "&cinema=" . urlencode($location_name) . 
+                  "&date=" . urlencode(formatDay($showtime['showtime'])) . "&time=" . urlencode(formatTime($showtime['showtime'])) . "'>
+                  <button class='btn-showtime'>" . formatTime($showtime['showtime']) ."</button></a>";
                 };
               echo "</div>";
             };
@@ -53,5 +54,12 @@
     $formattedTime = $dateTime->format('g:i A'); // 'g' for 12-hour format, 'A' for AM/PM
 
     return $formattedTime; 
+  };
+
+  function formatDay($showtime) {
+    $dateTime = new DateTime($showtime);
+    $formattedDay = $dateTime->format('D, d M Y'); // 'g' for 12-hour format, 'A' for AM/PM
+
+    return $formattedDay; 
   };
 ?>

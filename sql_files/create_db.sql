@@ -40,10 +40,12 @@ CREATE TABLE showtimes (
 CREATE TABLE seats (
     seat_id INT PRIMARY KEY AUTO_INCREMENT,
     hall_id INT NOT NULL,
+    showtime_id INT NOT NULL,
     seat_number VARCHAR(10) NOT NULL,
     seat_type VARCHAR(50),
     is_available BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (hall_id) REFERENCES cinema_halls(hall_id)
+    FOREIGN KEY (showtime_id) REFERENCES showtimes(showtime_id)
 );
 
 CREATE TABLE ticket_types (

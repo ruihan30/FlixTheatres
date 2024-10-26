@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 });
 
+// Food combo buttons
 function decreaseValue(field_id) {
 	const numberField = document.getElementById(field_id);
 	const currentValue = parseInt(numberField.value) || 0;
