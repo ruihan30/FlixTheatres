@@ -611,6 +611,16 @@ h3 {
     grid-template-columns: repeat(9, auto);
     gap: 8px 16px;
     justify-self: center;
+    position: relative;
+}
+
+.seat-letters {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 4px;
+    left: -40px;
+    gap: 8px;
 }
 
 .seat {
@@ -621,6 +631,7 @@ h3 {
 #price-table {
     padding: 20px;
     background-color: var(--off-white);
+    display: none;
 }
 
 table {
@@ -716,6 +727,27 @@ table tr.disabled {
 .personal-details div {
     align-items: center;
     gap: 20px;
+}
+
+.radio-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.radio-square {
+    width: 240px;
+    height: 240px;
+    border: 1px solid var(--secondary-onblack-text-color);
+    background: url('assets/payment-methods/card.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.custom-radio {
+    appearance: none;
 }
 
 /* Footer */

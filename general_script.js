@@ -28,26 +28,65 @@ document.addEventListener("scroll", function() {
 	
 });
 
-// Cinema seating
-document.addEventListener('DOMContentLoaded', () => {
-	const rows = 7;
-	const columns = 9;
-	const container = document.getElementById('cinema-seating');
-	const seatSrc = 'assets/cinema-seating/available-seat.svg';
+// Toggle seats
+let selectedSeats = 0; 
 
-	if(container) {
-		for (let i = 0; i < rows; i++) {
-				for (let j = 0; j < columns; j++) {
-						const seat = document.createElement('img');
-						seat.classList.add('seat');
-						seat.src = seatSrc;
-						container.appendChild(seat);
-				}
+function toggleSeat(seatElement, isAvailable, seatType) {
+	// Only toggle if the seat is available
+	if (isAvailable === '1') {
+		// Toggle the active class
+		seatElement.classList.toggle('active');
+		const isActive = seatElement.classList.contains('active');
+
+		selectedSeats += isActive ? 1 : -1;
+
+		const img = seatElement.querySelector('img');
+		if (isActive) {
+			if (seatType === 'Wheelchair') {
+				img.src = 'assets/cinema-seating/wheelchair-selected-seat.svg';
+			} else {
+				img.src = 'assets/cinema-seating/selected-seat.svg';
+			}
+		} else {
+			img.src = img.getAttribute('data-original-src'); // Get the original source
 		}
-	} else {
-		console.error('Cinema seating container not found');
 	}
-});
+
+	updateTicketQuantity();
+}
+
+// Update ticket quantity
+function updateTicketQuantity() {
+	const table = document.getElementById("price-table");
+	const tickets_qty = document.getElementById("tickets_qty");
+	const tickets_price = document.getElementById("tickets_price");
+
+	if (selectedSeats > 0) {
+		table.style.display = 'block';
+	} else {
+		table.style.display = 'none';
+	}
+
+	tickets_qty.innerHTML = selectedSeats;
+	tickets_price.innerHTML = '$'+ (selectedSeats * 19.50).toFixed(2);
+}
+
+// Clear selection button 
+function clearSeatSelection() {
+	const seats = document.getElementsByClassName("seat");
+	
+	for (var i = 0; i < seats.length; i++) {
+		const isActive = seats[i].classList.contains('active');
+		if (isActive) {
+			seats[i].classList.remove('active'); 
+			const img = seats[i].querySelector('img');
+			img.src = img.getAttribute('data-original-src');
+		}
+	}
+
+	selectedSeats = 0; 
+	updateTicketQuantity();
+}
 
 // Food combo buttons
 function decreaseValue(field_id) {

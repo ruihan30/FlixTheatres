@@ -59,7 +59,8 @@ CREATE TABLE ticket_types (
 CREATE TABLE food_combos (
     combo_id INT PRIMARY KEY AUTO_INCREMENT,
     combo_name VARCHAR(100) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL
+    price DECIMAL(10, 2) NOT NULL,
+    img_url VARCHAR(255)
 );
 
 CREATE TABLE bookings (

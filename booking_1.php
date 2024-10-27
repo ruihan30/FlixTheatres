@@ -21,6 +21,10 @@ $cinema = $_GET['cinema'];
 $date = $_GET['date']; 
 $time = $_GET['time'];
 
+$combinedString = "$date, $time";
+$dateTime = DateTime::createFromFormat('D, d M Y, h:i A', $combinedString);
+$showtime = $dateTime -> format('Y-m-d H:i:s');
+
 // Establish connection
 @$conn = new mysqli('localhost', 'root', '', 'flix_theatres');
 
@@ -113,10 +117,15 @@ if ($result->num_rows > 0) {
 			</div>
 
 			<!-- Seating -->
-			<div class="d-flex flex-column align-items-center" style="gap: 20px;">
+			<div class="d-flex flex-column align-items-center" style="gap: 20px; position: relative;">
 				<img src="assets/screen_exit.svg" alt="screen">
-
-				<div id="cinema-seating"></div>
+				
+				
+				<div id="cinema-seating">
+					<div class="seat-letters"><p>A</p><p>B</p><p>C</p><p>D</p><p>E</p><p>F</p><p>G</p></div>
+					<div class="seat-letters" style="right: -40px; left: auto;"><p>A</p><p>B</p><p>C</p><p>D</p><p>E</p><p>F</p><p>G</p></div>
+					<?php include 'php_files/get_seats.php'; ?>
+				</div>
 
 				<!-- Legend -->
 				<div class="d-flex flex-column" style="gap: 16px;"> 
@@ -154,26 +163,24 @@ if ($result->num_rows > 0) {
 						<option value="">FT </option>
 						<option value="">FT </option>
 					</select> -->
-					<button class="btn-secondary btn-md" style="border: 1px solid var(--off-white); font-weight: var(--font-weight-regular); width: 300px;">Clear All Selections</button>
+					<button class="btn-secondary btn-md" onclick="clearSeatSelection()" style="border: 1px solid var(--off-white); font-weight: var(--font-weight-regular); width: 300px; cursor: pointer;">
+						Clear All Selections</button>
 				</div>
 				<!-- Table for pricing -->
 				<div id="price-table">
 					<table style="border: 0">
 						<tr>
 							<th>Ticket Type</th>
-							<th>Price</th>
 							<th>Quantity</th>
-							<th>Total Amount</th>
+							<th>Price</th>
 						</tr>
 						<tr>
 							<td>Standard Ticket</td>
-							<td>S$19.50</td>
-							<td>1</td>
-							<td>S$19.50</td>
+							<td id="tickets_qty">1</td>
+							<td id="tickets_price">S$19.50</td>
 						</tr>
 						<tr>
 							<td>Convenience Fee</td>
-							<td>S$2.00</td>
 							<td>1</td>
 							<td>S$2.00</td>
 						</tr>
@@ -183,36 +190,7 @@ if ($result->num_rows > 0) {
 			</div>
 
 			<!-- Add-ons -->
-			<div class="d-flex flex-column" style="gap: 12px;">
-				<h2 style="align-self: start;">Choose your add-ons:</h2>
-				<div class="d-flex flex-row" style="gap: 20px;">
-					<div class="d-flex flex-column" style="gap: 16px;">
-						<img src="assets/regular-combo.png" alt="combo" style="border: 1px solid var(--border-color);">
-						<div style="text-align: center">
-							<p>Regular Popcorn Combo</p>
-							<p>$8.50</p>
-						</div>
-						<div class="d-flex flex-row align-items-center justify-content-center" style="gap: 16px;">
-							<button class="integer-btn" onclick="decreaseValue('regular_combo')"><i class='bx bx-minus icon'></i></button>
-							<input type="number" id="regular_combo" class="number-field" value="0" readonly>
-							<button class="integer-btn" onclick="increaseValue('regular_combo')"><i class='bx bx-plus icon'></i></button>
-						</div>
-					</div>
-
-					<div class="d-flex flex-column" style="gap: 16px;">
-						<img src="assets/large-combo.png" alt="combo" style="border: 1px solid var(--border-color);">
-						<div style="text-align: center">
-							<p>Large Popcorn Combo</p>
-							<p>$8.50</p>
-						</div>
-						<div class="d-flex flex-row align-items-center justify-content-center" style="gap: 16px;">
-							<button class="integer-btn" onclick="decreaseValue('large_combo')"><i class='bx bx-minus icon'></i></button>
-							<input type="number" id="large_combo" class="number-field" value="0" readonly>
-							<button class="integer-btn" onclick="increaseValue('large_combo')"><i class='bx bx-plus icon'></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php include 'php_files/get_food.php'; ?>
 
 			<!-- Buttons -->
 			<div class="d-flex flex-row" style="gap: 16px;">
