@@ -48,10 +48,10 @@ CREATE TABLE seats (
     FOREIGN KEY (showtime_id) REFERENCES showtimes(showtime_id)
 );
 
-CREATE TABLE ticket_types (
-    type_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE tickets_ordered (
+    tickets_id INT PRIMARY KEY AUTO_INCREMENT,
     movie_id INT NOT NULL,
-    type_name VARCHAR(50) NOT NULL,
+    quantity INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (movie_id) REFERENCES movies(movie_id)
 );
@@ -63,14 +63,22 @@ CREATE TABLE food_combos (
     img_url VARCHAR(255)
 );
 
+CREATE TABLE food_combos_ordered (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    combo_id INT NOT NULL,
+    sub_price DECIMAL(10, 2) NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (combo_id) REFERENCES food_combos(combo_id)
+);
+
 CREATE TABLE bookings (
     booking_id INT PRIMARY KEY AUTO_INCREMENT,
     movie_id INT NOT NULL,
     seat_id INT NOT NULL,
     hall_id INT NOT NULL,
     showtime_id INT NOT NULL,
-    ticket_type_id INT NOT NULL,
-    food_combo_id INT,
+    tickets_id INT NOT NULL,
+    combo_id INT,
     booking_time DATETIME DEFAULT CURRENT_TIMESTAMP,
     total_price DECIMAL(10, 2) NOT NULL,
     customer_name VARCHAR(100) NOT NULL,
@@ -80,6 +88,12 @@ CREATE TABLE bookings (
     FOREIGN KEY (seat_id) REFERENCES seats(seat_id),
     FOREIGN KEY (hall_id) REFERENCES cinema_halls(hall_id),
     FOREIGN KEY (showtime_id) REFERENCES showtimes(showtime_id),
-    FOREIGN KEY (ticket_type_id) REFERENCES ticket_types(type_id),
-    FOREIGN KEY (food_combo_id) REFERENCES food_combos(combo_id)
+    FOREIGN KEY (ticket_id) REFERENCES tickets_ordered(tickets_id),
+    FOREIGN KEY (combo_id) REFERENCES food_combos_ordered(order_id)
 );
+
+
+
+
+
+

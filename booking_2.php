@@ -14,10 +14,50 @@
   <script defer src="general_script.js"></script>
 </head>
 
+<?php 
+
+session_start(); 
+if($_SESSION['title']) {
+	$title = $_SESSION['title'];
+	$cinema = $_SESSION['cinema'];
+	$date = $_SESSION['date'];
+	$time = $_SESSION['time'];
+
+	$combinedString = "$date, $time";
+	$dateTime = DateTime::createFromFormat('D, d M Y, h:i A', $combinedString);
+	$showtime = $dateTime -> format('Y-m-d H:i:s');
+} else {
+	echo "no session variables";
+}
+
+$selected_seats = $_SESSION['selected_seats'];
+$selected_combos = $_SESSION['selected_combos'];
+
+// Establish connection
+@$conn = new mysqli('localhost', 'root', '', 'flix_theatres');
+
+// Check connection
+if (mysqli_connect_errno()) {
+	echo 'Error: Could not connect to database.  Please try again later.';
+	exit;
+}
+
+// Query to fetch movie poster
+$query = "SELECT poster_url FROM movies m WHERE title = '" . $title . "'";
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+	$row = $result->fetch_assoc();
+	$poster_url = $row['poster_url'];
+};
+
+
+?>
+
 <body>
 
 	<!-- Navbar -->
-	<div class="d-flex justify-content-center" style="width: 100vw; position: sticky; padding: 0px;">
+	<div class="d-flex justify-content-center navbar-wrapper">
 		<nav id="navbar" class="container d-flex flex-row">
 			<div class="d-flex flex-row align-items-center nav-items">
 				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
@@ -30,11 +70,15 @@
 		</nav>
 	</div>
 
+
 	<!-- Movie Details -->
 	<div class="container d-flex flex-row" style="gap: 20px; margin: 20px 0px 72px 0px;">
+
 		<!-- Maybe session for timing and all the data to navigate between steps -->
 		<!-- Left -->
-		<div class="test" style="width: calc(33% - 20px);">timer, movie poster</div>
+		<div style="width: 360px;">
+			<?php echo "<img src='{$poster_url}' alt='{$title}' class='booking_poster'>"; ?>
+		</div>
 
 		<!-- Right -->
 		<div class="d-flex flex-column" style="gap: 48px; flex-grow: 1;">
@@ -42,7 +86,9 @@
 			<!-- Steps -->
 			<div class="steps">
 				<div class="d-flex flex-column align-items-center" style="gap: 12px;">
-					<div class="number-field d-flex align-items-center justify-content-center" style="background-color: var(--off-white); color: var(--bg-color-black)">1</div>
+					<div class="number-field d-flex align-items-center justify-content-center" style="background-color: var(--off-white); color: var(--bg-color-black)">
+						<i class='bx bx-check icon' style="font-size: 32px;"></i>
+					</div>
 					<p>Choose your seats & add-ons</p>
 				</div>
 				<div class="d-flex flex-column align-items-center" style="gap: 12px;">
@@ -59,30 +105,39 @@
 
 			<!-- Movie details -->
 			<div class="d-flex flex-column" style="gap: 36px; padding: 28px; border: 1px solid var(--border-color);">
-				<h1>Beetlejuice Beetlejuice</h1>
+				<h1><?php echo "{$title}"; ?></h1>
 				<div class="d-flex flex-row" style="gap: 36px;">
 
-					<div class="d-flex flex-column" style="flex-grow: 1; flex-basis: 0; gap: 8px;">
-						<p style="color: var(--secondary-onblack-text-color);">Cinema</p>
-						<div class='d-flex flex-row booking-display'>FT Bishan</div>
-					</div>
+					<?php 
+						echo "
+						<div class='d-flex flex-column' style='flex-grow: 1; flex-basis: 0; gap: 8px;'>
+							<p style='color: var(--secondary-onblack-text-color);'>Cinema</p>
+							<div class='d-flex flex-row booking-display'>{$cinema}</div>
+						</div>
 
-					<div class="d-flex flex-column" style="flex-grow: 1; flex-basis: 0; gap: 8px;">
-						<p style="color: var(--secondary-onblack-text-color);">Date</p>
-						<div class='d-flex flex-row booking-display'>Fri, 18 Sep 2024</div>
-					</div>
+						<div class='d-flex flex-column' style='flex-grow: 1; flex-basis: 0; gap: 8px;'>
+							<p style='color: var(--secondary-onblack-text-color);'>Date</p>
+							<div class='d-flex flex-row booking-display'>{$date}</div>
+						</div>
 
-					<div class="d-flex flex-column" style="flex-grow: 1; flex-basis: 0; gap: 8px;">
-						<p style="color: var(--secondary-onblack-text-color);">Time</p>
-						<div class='d-flex flex-row booking-display'>3.30pm</div>
-					</div>
+						<div class='d-flex flex-column' style='flex-grow: 1; flex-basis: 0; gap: 8px;'>
+							<p style='color: var(--secondary-onblack-text-color);'>Time</p>
+							<div class='d-flex flex-row booking-display'>{$time}</div>
+						</div>";
+					?>
 					
 				</div>
 
 				<!-- Seating -->
 				<div class="d-flex flex-column align-items-center" style="gap: 20px;">
 					<img src="assets/screen_exit.svg" alt="screen">
-					<div id="cinema-seating"></div>
+
+					<div id="cinema-seating">
+						<div class="seat-letters"><p>A</p><p>B</p><p>C</p><p>D</p><p>E</p><p>F</p><p>G</p></div>
+						<div class="seat-letters" style="right: -40px; left: auto;"><p>A</p><p>B</p><p>C</p><p>D</p><p>E</p><p>F</p><p>G</p></div>
+						<?php include 'php_files/get_selected_seats.php'; ?>
+					</div>
+
 					<!-- Legend -->
 					<div class="d-flex flex-column" style="gap: 16px;"> 
 						<div class="decorative-header" style="width:180px; padding:8px 0px;">
@@ -110,43 +165,65 @@
 				</div>
 
 				<!-- Table for pricing -->
-				<div id="price-table">
+				<div id="price-table" style="display: block;">
 					<table style="border: 0">
 						<tr>
 							<th>Ticket Type</th>
-							<th>Price</th>
 							<th>Quantity</th>
-							<th>Total Amount</th>
+							<th>Price</th>
 						</tr>
 						<tr class="disabled">
 							<td>Standard Ticket</td>
-							<td>S$19.50</td>
-							<td>1</td>
-							<td>S$19.50</td>
+							<?php
+								$total_price = 2;
+								$seats_qty = 0;
+								foreach ($selected_seats as $index => $seat) {
+									$seats_qty += 1;
+								} 
+								$total_price += 19.50 * $seats_qty;
+								echo "
+									<td>{$seats_qty}</td>
+									<td>S$" . number_format(19.50 * $seats_qty, 2) . "</td>";
+							?>
 						</tr>
 						<tr class="disabled">
 							<td>Convenience Fee</td>
-							<td>S$2.00</td>
 							<td>1</td>
 							<td>S$2.00</td>
 						</tr>
-						<tr class="disabled">
-							<td>Regular Popcorn Combo</td>
-							<td>S$8.50</td>
-							<td>1</td>
-							<td>S$8.50</td>
-						</tr>
+						<?php 
+							foreach($selected_combos as $combo) {
+								$query = "SELECT price FROM food_combos WHERE combo_name = '" . $combo['name'] . "'";
+								$result = $conn->query($query);
+
+								if ($result->num_rows > 0) {
+									$row = $result->fetch_assoc();
+									$combo_price = $row['price'];
+								};
+
+								$total_price += $combo_price * $combo['quantity'];
+
+								echo "
+									<tr class='disabled'>
+										<td>{$combo['name']}</td>
+										<td>{$combo['quantity']}</td>
+										<td>S$" . number_format($combo_price * $combo['quantity'], 2) . "</td>
+									</tr>";
+							}
+						?>
 						<tr><td></td></tr>
 						<tr>
-							<td colspan="3" style="border-top: 0.5px solid var(--secondary-onwhite-text-color); font-weight: var(--font-weight-medium);">Payable Amount</td>
-							<td style="border-top: 0.5px solid var(--secondary-onwhite-text-color); font-weight: var(--font-weight-medium);">S$30.00</td>
+							<td colspan="2" style="border-top: 0.5px solid var(--secondary-onwhite-text-color); font-weight: var(--font-weight-medium);">Payable Amount</td>
+							<td style="border-top: 0.5px solid var(--secondary-onwhite-text-color); font-weight: var(--font-weight-medium);">
+								<?php echo "S$" . number_format($total_price, 2);?>
+							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 
 			<!-- Payment info and method -->
-			<div class="d-flex flex-column" style="gap: 48px;">
+			<div class="d-flex flex-column" style="gap: 48px; width: 800px;">
 				<div class="d-flex flex-column" style="gap: 8px;">
 					<h2 style="align-self: start;" >Enter your personal details</h2>
 					<p style="color: var(--secondary-onblack-text-color);">The information you provide will be used to contact you about your tickets and to send a confirmation email for your payment.</p>
@@ -170,14 +247,46 @@
 
 				<!-- Payment methods -->
 				<div class="d-flex flex-column" style="gap: 12px;">
-					<div class="d-flex flex-row" style="flex-wrap: wrap;">
+					<div class="d-flex flex-row" style="flex-wrap: wrap; gap:20px; row-gap: 40px;">
+
 						<div class="radio-container">
-							<div class="radio-square">
-								<!-- <img src="path_to_your_image.jpg" alt="payment method" class="radio-image"> -->
-								<input type="radio" id="custom-radio" name="custom-radio" class="custom-radio">
-								<i class='bx bx-radio-circle icon' style="font-size: 24px;"></i>
-							</div>
-							<label for="custom-radio" class="custom-radio-label">Credit & Debit Card</label>
+							<input type="radio" id="credit-card" name="payment-method" class="custom-radio">
+							<label for="credit-card" class="radio-square" style="background: url('assets/payment-methods/card.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="credit-card" class="custom-radio-label">Credit & Debit Card</label>
+						</div>
+
+						<div class="radio-container">
+							<input type="radio" id="apple-pay" name="payment-method" class="custom-radio">
+							<label for="apple-pay" class="radio-square" style="background: url('assets/payment-methods/apple-pay.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="apple-pay" class="custom-radio-label">Apple Pay</label>
+						</div>
+
+						<div class="radio-container">
+							<input type="radio" id="google-pay" name="payment-method" class="custom-radio">
+							<label for="google-pay" class="radio-square" style="background: url('assets/payment-methods/google-pay.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="google-pay" class="custom-radio-label">Google Pay</label>
+						</div>
+
+						<div class="radio-container">
+							<input type="radio" id="visa" name="payment-method" class="custom-radio">
+							<label for="visa" class="radio-square" style="background: url('assets/payment-methods/visa.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="visa" class="custom-radio-label">VISA Mastercard</label>
+						</div>
+
+						<div class="radio-container">
+							<input type="radio" id="paynow" name="payment-method" class="custom-radio">
+							<label for="paynow" class="radio-square" style="background: url('assets/payment-methods/paynow.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="paynow" class="custom-radio-label">PayNow</label>
 						</div>
 					</div>
 				</div>

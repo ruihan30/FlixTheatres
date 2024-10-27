@@ -21,9 +21,29 @@ $cinema = $_GET['cinema'];
 $date = $_GET['date']; 
 $time = $_GET['time'];
 
+session_start(); 
+$_SESSION['title'] = $title;
+$_SESSION['cinema'] = $cinema;
+$_SESSION['date'] = $date;
+$_SESSION['time'] = $time;
+
 $combinedString = "$date, $time";
 $dateTime = DateTime::createFromFormat('D, d M Y, h:i A', $combinedString);
 $showtime = $dateTime -> format('Y-m-d H:i:s');
+
+function formatTime($showtime) {
+	$dateTime = new DateTime($showtime);
+	$formattedTime = $dateTime->format('g:i A'); // 'g' for 12-hour format, 'A' for AM/PM
+
+	return $formattedTime; 
+};
+
+function formatDay($showtime) {
+	$dateTime = new DateTime($showtime);
+	$formattedDay = $dateTime->format('D, d M Y'); // 'g' for 12-hour format, 'A' for AM/PM
+
+	return $formattedDay; 
+};
 
 // Establish connection
 @$conn = new mysqli('localhost', 'root', '', 'flix_theatres');
@@ -66,7 +86,7 @@ if ($result->num_rows > 0) {
 
 		<!-- Maybe session for timing -->
 		<!-- Left -->
-		<div style="width: calc(33% - 20px);">
+		<div style="width: 360px;">
 			<?php echo "<img src='{$poster_url}' alt='{$title}' class='booking_poster'>"; ?>
 		</div>
 
@@ -194,8 +214,14 @@ if ($result->num_rows > 0) {
 
 			<!-- Buttons -->
 			<div class="d-flex flex-row" style="gap: 16px;">
-				<a href="" style="width: 100%;"><button class="d-flex flex-row btn-primary btn-lg justify-content-center" style="background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;"
-					>Next Step<i class='bx bx-right-arrow-circle icon' style="font-size: 24px;"></i></button></a>
+				<?php
+				// echo "<a href='booking_2.php?title=". urlencode($title) . "&cinema=" . urlencode($cinema) . 
+				// "&date=" . urlencode(formatDay($showtime)) . "&time=" . urlencode(formatTime($showtime)) .
+				// "' style='width: 100%;'><button onclick=\"gatherSelections()\" class='d-flex flex-row btn-primary btn-lg justify-content-center' style='background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;'
+				// 	>Next Step<i class='bx bx-right-arrow-circle icon' style='font-size: 24px;'></i></button></a>";
+				?>
+				<button onclick="gatherSelections()" class='d-flex flex-row btn-primary btn-lg justify-content-center' style='background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;'
+				>Next Step<i class='bx bx-right-arrow-circle icon' style='font-size: 24px;'></i></button>
 			</div>
 		</div>
 
