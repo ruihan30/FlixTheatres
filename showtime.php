@@ -17,7 +17,7 @@
 <body>
 
 	<!-- Navbar -->
-	<div class="d-flex justify-content-center" style="width: 100vw; position: sticky; padding: 0px;">
+	<div class="d-flex justify-content-center navbar-wrapper">
 		<nav id="navbar" class="container d-flex flex-row">
 			<div class="d-flex flex-row align-items-center nav-items">
 				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
@@ -31,73 +31,7 @@
 	</div>
 
 	<!-- Movie Details -->
-	<div class="container d-flex flex-row" style="gap: 12px;">
-		<!-- Need to think about image scaling here -->
-		<div class="test">movie poster</div>
-
-		<div class="d-flex flex-column showtime-movie-details">
-			<h1>Beetlejuice Beetlejuice</h1>
-			<div class="d-flex flex-row" style="gap: 32px;">
-				<div class="d-flex flex-row" style="gap: 2px; font-size: 28px;">
-					<i class='bx bxs-star icon'></i>
-					<i class='bx bxs-star icon'></i>
-					<i class='bx bxs-star icon'></i>
-					<i class='bx bxs-star icon'></i>
-					<i class='bx bxs-star-half icon'></i>
-				</div>
-				<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%;">
-					<div class="pg-rating pg13">PG13</div>
-					<p class="pg-description">Some frightening scenes & coarse language</p>
-				</div>
-			</div>
-			<div class="d-flex flex-row align-items-center" style="gap: 12px;">
-				<p>Available in: </p>
-				<img src="assets/cinema-types/imax-white.svg" alt="imax">
-				<img src="assets/cinema-types/premiere-white.svg" alt="lumiere">
-				<img src="assets/cinema-types/lumiere-white.svg" alt="premiere">
-			</div>
-			<div class="d-flex flex-row align-items-center" style="gap: 16px; align-self: center; padding: 8px 0px;"><i class='bx bx-play icon'></i>Watch the trailer</div>
-			<div class="d-flex flex-column" style="gap: 8px; flex-grow: 1; ">
-				<p style="font-size: var(--font-size-sm-16); color: var(--off-white);">Synopsis</p>
-				<p style="font-size: var(--font-size-sm-16); flex-grow: 1;">
-					Three generations of the Deetz family return home to Winter River after tragedy. Still haunted by Beetlejuice, Lydia's life soon gets turned upside down when her rebellious teenage daughter discovers a mysterious portal to the afterlife. 
-					When someone says Beetlejuice's name three times, the mischievous demon gleefully returns to unleash his very own brand of mayhem. 
-					Three generations of the Deetz family return home to Winter River after an unexpected family tragedy. Still haunted by Beetlejuice, Lydia's life soon gets turned upside down when her rebellious teenage daughter discovers a mysterious portal to the afterlife. When someone says Beetlejuice's name three times, the mischievous demon gleefully returns to unleash his very own brand of mayhem.
-				</p>
-			</div>
-
-
-		</div>
-
-		<div class="d-flex flex-column showtime-movie-moreDetails">
-			<div class="d-flex flex-column" style="gap: 12px;">
-				<div class="d-flex flex-column" style="gap: 4px;">
-					<p style="color: var(--secondary-onblack-text-color);">Genre:</p>
-					<p style="font-size: var(--font-size-md-20);"><span>Fantasy</span> | <span>Sci-Fi</span></p>
-				</div>
-				<div class="d-flex flex-column" style="gap: 4px;">
-					<p style="color: var(--secondary-onblack-text-color);">Duration:</p>
-					<p style="font-size: var(--font-size-md-20);">2h 35min</p>
-				</div>
-				<div class="d-flex flex-column" style="gap: 4px;">
-					<p style="color: var(--secondary-onblack-text-color);">Language:</p>
-					<p style="font-size: var(--font-size-md-20);">English (Chinese Subbed)</p>
-				</div>
-			</div>
-
-			<div class="d-flex flex-column" style="gap: 12px;">
-				<div class="d-flex flex-column" style="gap: 4px;">
-					<p style="color: var(--secondary-onblack-text-color);">Directed by:</p>
-					<p style="font-size: var(--font-size-md-20);">Tim Burton</p>
-				</div>
-				<div class="d-flex flex-column" style="gap: 4px;">
-					<p style="color: var(--secondary-onblack-text-color);">Cast:</p>
-					<p style="font-size: var(--font-size-md-20);">Michael Keaton, Catherine O'Hara, Winona Ryder, Jenna Ortega, Willem Dafoe</p>
-				</div>
-			</div>
-		</div>
-
-	</div>
+	<?php include 'php_files/get_movie_details.php'; ?>
 
 	<!-- Cinema Filter-->
 	<div class="container d-flex flex-column" style="gap: 32px; margin: 40px 0px;">
@@ -116,7 +50,7 @@
 						<div class="d-flex flex-row" style="gap: 8px; flex-wrap: wrap;">
 							<button class="btn-secondary btn-md cinema-btn">FT Bishan</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Sembawang</button>
-							<button class="btn-primary btn-md" style="background-color: var(--primary-color-purple); color: var(--off-white);">FT Yishun</button>
+							<button class="btn-secondary btn-md cinema-btn">FT Yishun</button>
 						</div>
 					</div>
 					<!-- South-->
@@ -127,10 +61,10 @@
 							<button class="btn-secondary btn-md cinema-btn">FT City Square</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Funan</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Grand, Great World</button>
-							<button class="btn-secondary btn-md cinema-btn">FT Plaza</button>
+							<!-- <button class="btn-secondary btn-md cinema-btn">FT Plaza</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Suntec City</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Tiong Bahru</button>
-							<button class="btn-secondary btn-md cinema-btn">FT VivoCity</button>
+							<button class="btn-secondary btn-md cinema-btn">FT VivoCity</button> -->
 						</div>
 					</div>
 				</div>
@@ -145,7 +79,7 @@
 							<button class="btn-secondary btn-md cinema-btn">FT Bugis+</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Katong</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Paya Lebar</button>
-							<button class="btn-secondary btn-md cinema-btn">FT Tampines</button>
+							<!-- <button class="btn-secondary btn-md cinema-btn">FT Tampines</button> -->
 						</div>
 					</div>
 					<!-- West-->
@@ -171,11 +105,15 @@
 	<div class="container d-flex flex-column align-items-center" style="gap: 32px; margin: 40px 0px;">
 		<div class="d-flex flex-row" style="height: 48px; gap: 28px; width: 780px;">
 			<h2>Showtimes available at: </h2>
-			<p class="selected-cinema">Flix Theatres Yishun</p>
+			<p class="selected-cinema"></p>
 		</div>
 
 		<!-- Dates in a week -->
-		<div class="d-flex flex-row" style="gap: 20px;">
+		<div class="d-flex flex-row" style="gap: 20px; margin-bottom: 100px;">
+
+			<?php include 'php_files/print_showtimes.php'; ?>
+
+			<!-- Backup just in case
 			<div>
 				<div class="date-container">
 					<div class="date">
@@ -185,36 +123,19 @@
 					<p class="date-day">Tues</p>
 				</div>
 
-				<!-- Showtimes -->
-				<div class="d-flex flex-column justify-content-center showtimes">
+				<div class="d-flex flex-column justify-content-center showtimes" id="Bishan">
 					<a href=""><button class="btn-showtime">1.30 PM</button></a>
 					<a href=""><button class="btn-showtime">4.35 PM</button></a>
 					<a href=""><button class="btn-showtime">9.25 PM</button></a>
 				</div>
-			</div>
 
-			<div>
-				<div class="date-container disabled">
-					<div class="date">
-						<h3>17</h3>
-						<p>Sep</p>
-					</div>
-					<p class="date-day">Tues</p>
-				</div>
-
-				<div class="d-flex flex-column justify-content-center showtimes">
+				<div class="d-flex flex-column justify-content-center showtimes" id="Bishan">
 					<a href=""><button class="btn-showtime">1.30 PM</button></a>
 					<a href=""><button class="btn-showtime">4.35 PM</button></a>
 					<a href=""><button class="btn-showtime">9.25 PM</button></a>
-					<a href=""><button class="btn-showtime">9.25 PM</button></a>
 				</div>
-			</div>
+			</div> -->
 
-			<div class="test">test</div>
-			<div class="test">test</div>
-			<div class="test">test</div>
-			<div class="test">test</div>
-			<div class="test">test</div>
 		</div>
 	</div>
 	

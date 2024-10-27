@@ -17,7 +17,8 @@ CREATE TABLE movies (
     genre1 VARCHAR(50) NOT NULL,
     genre2 VARCHAR(50),
     director VARCHAR(100) NOT NULL,
-    casts VARCHAR(500)
+    casts VARCHAR(500),
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE cinema_halls (
@@ -39,10 +40,12 @@ CREATE TABLE showtimes (
 CREATE TABLE seats (
     seat_id INT PRIMARY KEY AUTO_INCREMENT,
     hall_id INT NOT NULL,
+    showtime_id INT NOT NULL,
     seat_number VARCHAR(10) NOT NULL,
     seat_type VARCHAR(50),
     is_available BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (hall_id) REFERENCES cinema_halls(hall_id)
+    FOREIGN KEY (showtime_id) REFERENCES showtimes(showtime_id)
 );
 
 CREATE TABLE ticket_types (
@@ -56,7 +59,8 @@ CREATE TABLE ticket_types (
 CREATE TABLE food_combos (
     combo_id INT PRIMARY KEY AUTO_INCREMENT,
     combo_name VARCHAR(100) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL
+    price DECIMAL(10, 2) NOT NULL,
+    img_url VARCHAR(255)
 );
 
 CREATE TABLE bookings (

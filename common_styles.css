@@ -247,6 +247,8 @@ i {
 .carousel-slide {
     min-width: 100%;
     list-style: none;
+    background: linear-gradient(180deg, rgba(28, 28, 28, 0.00) 46.71%, #1C1C1C 100%);
+    position: relative;
 }
 
 .carousel-slide img {
@@ -266,13 +268,23 @@ i {
     box-sizing: border-box;
     padding: 28px 20px;
     gap: 24px;
-    width: 320px;
-    height: 320px;
-}
-
-.carousel-info {
+    width: 400px;
+    height: 400px;
     font-size: var(--font-size-md-20);
     color: var(--secondary-onblack-text-color);
+    z-index: 4;
+}
+
+.carousel-info a{
+    color: var(--secondary-onblack-text-color);
+}
+
+.carousel-info a:hover{
+    color: var(--off-white);
+}
+
+.carousel-info a:hover .bx-play{
+    outline: var(--off-white) solid 2px;
 }
 
 h1 {
@@ -339,6 +351,13 @@ h1 {
 
 .movie-card {
     color: var(--secondary-onblack-text-color);
+    overflow: hidden;
+}
+
+.movie-card-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .movie-title {
@@ -354,7 +373,7 @@ h1 {
     flex-grow: 1;
 }
 
-.bxs-star, .bxs-star-half {
+.bxs-star, .bxs-star-half, .bx-star{
     color: #FFC107;
 }
 
@@ -410,15 +429,32 @@ h1 {
 
 /* Showtime Page */
 
+.showtime-movie-poster {
+    height: 520px;
+    width: auto;
+}
+
 .showtime-movie-details {
-    width: 520px;
-    /* height: 520px; */
-    /* box-sizing: border-box; */
+    flex: 0 0 520px;
+    box-sizing: border-box;
     gap: 20px;
     border: 1px solid var(--border-color);
     padding: 24px;
     color: var(--secondary-onblack-text-color);
 }
+
+.showtime-movie-details a{
+    color: var(--secondary-onblack-text-color);
+}
+
+.showtime-movie-details a:hover{
+    color: var(--off-white);
+}
+
+.showtime-movie-details a:hover .bx-play{
+    outline: var(--off-white) solid 2px;
+}
+
 
 .showtime-movie-moreDetails {
     padding: 16px;
@@ -434,6 +470,12 @@ h1 {
 .cinema-btn {
     color: var(--bg-color-black);
     border: 1px solid var(--bg-color-black);
+}
+
+.cinema-btn.active {
+    background-color: var(--primary-color-purple);
+    color: var(--off-white);
+    border: 1px solid var(--primary-color-purple);
 }
 
 .selected-cinema {
@@ -481,6 +523,7 @@ h1 {
 .showtimes {
     gap: 8px;
     padding: 16px 4px;
+    display: none;
 }
 
 /* Cinemas Page */
@@ -534,6 +577,11 @@ h3 {
 
 /* Booking 1 Page */
 
+.booking_poster {
+    width: 100%;
+    height: auto;
+}
+
 .booking-input {
     flex-grow: 1;
     border: none;
@@ -548,16 +596,66 @@ h3 {
     font-weight: var(--font-weight-medium);
 }
 
+.booking-display {
+    flex-grow: 1;
+    padding: 12px 16px;
+    background-color: var(--off-white);
+    font-size: var(--font-size-sm-16);
+    font-weight: var(--font-weight-medium);
+    align-items: center;
+    justify-content: space-between;
+    color: var(--bg-color-black);
+}
+
 #cinema-seating {
     display: grid;
     grid-template-columns: repeat(9, auto);
     gap: 8px 16px;
     justify-self: center;
+    position: relative;
+}
+
+.seat-letters {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 4px;
+    left: -40px;
+    gap: 8px;
 }
 
 .seat {
     width: 28px;
     height: 24px;
+}
+
+#price-table {
+    padding: 20px;
+    background-color: var(--off-white);
+    display: none;
+}
+
+table {
+    color: var(--bg-color-black);
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th {
+    text-align: left;
+    font-size: var(--font-size-sm-16);
+    color: var(--secondary-onwhite-text-color);
+    font-weight: var(--font-weight-medium) ;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid var(--secondary-onwhite-text-color);
+}
+
+table td {
+    padding: 12px 0px 0px 0px;
+}
+
+table tr.disabled {
+    color: var(--secondary-onwhite-text-color);
 }
 
 .integer-btn {
@@ -608,6 +706,49 @@ h3 {
     transform: translate(-50%, -50%);
     z-index: -1;
     height: 1px;
+}
+
+/* Booking 2 page */
+
+.personal-details label {
+    width: 160px;
+    color: var(--secondary-onblack-text-color);
+    text-align: right;
+    font-size: var(--font-size-sm-md-18);
+}
+
+.personal-details div, input {
+    flex-grow: 1;
+    display: flex;
+    padding: 8px 16px;
+    font-family: 'Outfit';
+    font-size: var(--font-size-sm-md-18);
+}
+
+.personal-details div {
+    align-items: center;
+    gap: 20px;
+}
+
+.radio-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.radio-square {
+    width: 240px;
+    height: 240px;
+    border: 1px solid var(--secondary-onblack-text-color);
+    background: url('assets/payment-methods/card.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.custom-radio {
+    appearance: none;
 }
 
 /* Footer */
