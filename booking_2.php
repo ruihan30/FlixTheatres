@@ -17,7 +17,7 @@
 <?php 
 
 session_start(); 
-if($_SESSION['title']) {
+if(isset($_SESSION['title'])) {
 	$title = $_SESSION['title'];
 	$cinema = $_SESSION['cinema'];
 	$date = $_SESSION['date'];
@@ -202,6 +202,7 @@ if ($result->num_rows > 0) {
 								};
 
 								$total_price += $combo_price * $combo['quantity'];
+								$_SESSION['total_price'] = $total_price;
 
 								echo "
 									<tr class='disabled'>
@@ -230,18 +231,19 @@ if ($result->num_rows > 0) {
 				</div>
 
 				<!-- Inputs -->
+				<form action="booking_3.php" method="post" class="d-flex flex-column" style="gap: 48px;">
 				<div class="d-flex flex-column personal-details" style="gap: 8px;">
 					<div>
-						<label for="name">Name:</label>
-						<input type="text" id="name" name="name" placeholder="Tan Alex">
+						<label for="name">* Name:</label>
+						<input type="text" id="name" name="name" required placeholder="Alex Tan">
 					</div>
 					<div>
 						<label for="email">* Email:</label>
-    				<input type="email" id="email" name="email" required>
+    				<input type="email" id="email" name="email" required placeholder="abc@email.com">
 					</div>
 					<div>
 						<label for="contact">Contact Number:</label>
-    				<input type="tel" id="contact" name="contact" pattern="[0-9]{8,15}">
+    				<input type="tel" id="contact" name="contact" pattern="[0-9]{8,15}" placeholder="1234 5678">
 					</div>
 				</div>
 
@@ -290,15 +292,18 @@ if ($result->num_rows > 0) {
 						</div>
 					</div>
 				</div>
+
+				<!-- Buttons -->
+				<div class="d-flex flex-row" style="gap: 16px;">
+					<a href="javascript:history.back()" style="width: 100%;"><button class="d-flex flex-row btn-secondary btn-lg justify-content-center" style="width: 100%;"
+						><i class='bx bx-left-arrow-circle icon' style="font-size: 24px;"></i>Previous Step</button></a>
+					<button type="submit" class="d-flex flex-row btn-coloured btn-lg justify-content-center align-items-center" style="width: 100%;"
+						>Proceed to Pay<i class='bx bx-right-arrow-circle icon' style="font-size: 24px;"></i></button>
+				</div>
+				</form>
 			</div>
 
-			<!-- Buttons -->
-			<div class="d-flex flex-row" style="gap: 16px;">
-				<a href="" style="width: 100%;"><button class="d-flex flex-row btn-secondary btn-lg justify-content-center" style="width: 100%;"
-					><i class='bx bx-left-arrow-circle icon' style="font-size: 24px;"></i>Previous Step</button></a>
-				<a href="" style="width: 100%;"><button class="d-flex flex-row btn-primary btn-lg justify-content-center" style="background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;"
-					>Next Step<i class='bx bx-right-arrow-circle icon' style="font-size: 24px;"></i></button></a>
-			</div>
+			
 		</div>
 
 	</div>

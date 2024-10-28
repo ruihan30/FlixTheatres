@@ -14,6 +14,124 @@
   <script defer src="general_script.js"></script>
 </head>
 
+<?php 
+
+session_start(); 
+if(isset($_SESSION['title'])) {
+	$title = $_SESSION['title'];
+	$cinema = $_SESSION['cinema'];
+	$date = $_SESSION['date'];
+	$time = $_SESSION['time'];
+
+	$combinedString = "$date, $time";
+	$dateTime = DateTime::createFromFormat('D, d M Y, h:i A', $combinedString);
+	$showtime = $dateTime -> format('Y-m-d H:i:s');
+
+	$selected_seats = $_SESSION['selected_seats'];
+	$selected_combos = $_SESSION['selected_combos'];
+	$total_price = $_SESSION['total_price']; 
+
+	// Get price for each food combo
+	if (!empty($selected_combos)) {
+		foreach($selected_combos as $index => $combo) {
+			$query = "SELECT price FROM food_combos WHERE combo_name = '" . $combo['name'] . "'";
+			$result = $conn->query($query);
+
+			if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
+				$selected_combos[$index]['sub-price'] = $row['price'] * $combo['quantity'];
+			};
+		}
+	}
+	
+	// Calculate number of seats
+	foreach($selected_seats as $seats) {
+		$selected_seats_qty += 1;
+	}
+}
+
+$name = $_POST['name'];
+$email = $_POST['email']; 
+$contact = $_POST['contact'];
+
+// Establish connection
+@$conn = new mysqli('localhost', 'root', '', 'flix_theatres');
+
+// Check connection
+if (mysqli_connect_errno()) {
+	echo 'Error: Could not connect to database.  Please try again later.';
+	exit;
+}
+
+// For debugging
+// echo "<h2>Session Variables:</h2>";
+// echo "Title: " . htmlspecialchars($title) . "<br>";
+// echo "Cinema: " . htmlspecialchars($cinema) . "<br>";
+// echo "Date: " . htmlspecialchars($date) . "<br>";
+// echo "Time: " . htmlspecialchars($time) . "<br>";
+// echo "Showtime: " . htmlspecialchars($showtime) . "<br>";
+// echo "Name: " . htmlspecialchars($name) . "<br>";
+// echo "Email: " . htmlspecialchars($email) . "<br>";
+// echo "Contact Number: " . htmlspecialchars($contact) . "<br>";
+// echo "Selected Seats: <pre>" . htmlspecialchars(implode(", ", $selected_seats)) . "</pre><br>";
+// echo "Selected Combos:<br>";
+// foreach ($selected_combos as $combo) {
+//     echo "Combo Name: " . htmlspecialchars($combo['name']) . ", Quantity: " . intval($combo['quantity']) . 
+// 		", Price: " . htmlspecialchars($combo['sub-price'])  . "<br><br>";
+// }
+
+if(!empty($_SESSION)) {
+	// Insert into bookings table
+	$query = 
+	"INSERT INTO bookings (movie_id, hall_id, showtime_id, booking_time, total_price, customer_name, email, contact_number)
+	SELECT m.movie_id, c.hall_id, s.showtime_id, NOW(), {$total_price}, '{$name}', '{$email}', '{$contact}'
+	FROM movies m
+	JOIN cinema_halls c ON c.location_name = '{$cinema}'
+	JOIN showtimes s ON s.showtime = '{$showtime}'
+	WHERE m.title = '{$title}';";
+	echo "{$query}";
+	$result = $conn->query($query);
+
+	$booking_id = $conn->insert_id; 
+
+	// Insert into tickets_ordered table
+	$query = 
+	"INSERT INTO tickets_ordered (movie_id, quantity, price, booking_id)
+	SELECT m.movie_id, {$selected_seats_qty}, 19.50, {$booking_id}
+	FROM movies m
+	WHERE m.title = '{$title}'";
+	echo "{$query}";
+	$result = $conn->query($query);
+
+	// Insert into combos_ordered table
+	if (!empty($selected_combos)) {
+		foreach($selected_combos as $index => $combo) {
+			$query = 
+			"INSERT INTO food_combos_ordered (combo_id, sub_price, quantity, booking_id)
+			SELECT fc.combo_id, {$combo['sub-price']}, {$combo['quantity']}, {$booking_id} 
+			FROM food_combos fc
+			WHERE fc.combo_name = '{$combo['name']}'";
+			$result = $conn->query($query);
+		}
+	}
+
+	// Update seats availability
+	foreach($selected_seats as $index => $seat) {
+		$query = 
+		"UPDATE seats s
+		SET s.is_available = 0, s.booking_id = {$booking_id}
+		WHERE s.seat_number = '{$seat}'
+		AND s.hall_id = (SELECT c.hall_id FROM cinema_halls c WHERE c.location_name = '{$cinema}')
+		AND s.showtime_id = (SELECT sh.showtime_id FROM showtimes sh WHERE sh.showtime = '{$showtime}');";
+		$result = $conn->query($query);
+	}
+}
+
+session_unset();
+session_destroy();
+
+?>
+
 <body>
 
 	<!-- Navbar -->
@@ -78,7 +196,7 @@
 		
 		<!-- Buttons -->
 		<div class="d-flex flex-row" style="gap: 16px;">
-			<a href="" style="width: 100%;"><button class="d-flex flex-row btn-secondary btn-lg justify-content-center" style="width: 100%;"
+			<a href="#" style="width: 100%;"><button class="d-flex flex-row btn-secondary btn-lg justify-content-center" style="width: 100%; cursor: pointer;"
 				><i class='bx bx-movie-play icon' style="font-size: 24px;"></i>Discover more movies</button></a>
 			<a href="index.php" style="width: 100%;"><button class="d-flex flex-row btn-primary btn-lg justify-content-center" style="background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;"
 				><i class='bx bx-home-smile icon' style="font-size: 24px;"></i>Back to Home</button></a>

@@ -184,6 +184,19 @@ a {
     gap: 8px;
 }
 
+.btn-coloured {
+    background-color: var(--primary-color-purple);
+    color: var(--off-white);
+    font-family: 'Outfit';
+    border: none;
+    gap: 8px;
+}
+
+.btn-coloured:hover {
+    background-color: #8247B9; 
+    cursor: pointer;
+}
+
 .btn-lg {
     font-size: var(--font-size-sm-md-18);
     font-weight: var(--font-weight-medium);
@@ -215,6 +228,10 @@ a {
 
 .btn-primary:hover {
     background-color: #D0D0D0;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
     cursor: pointer;
 }
 

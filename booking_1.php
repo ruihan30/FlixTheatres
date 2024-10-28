@@ -220,7 +220,7 @@ if ($result->num_rows > 0) {
 				// "' style='width: 100%;'><button onclick=\"gatherSelections()\" class='d-flex flex-row btn-primary btn-lg justify-content-center' style='background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;'
 				// 	>Next Step<i class='bx bx-right-arrow-circle icon' style='font-size: 24px;'></i></button></a>";
 				?>
-				<button onclick="gatherSelections()" class='d-flex flex-row btn-primary btn-lg justify-content-center' style='background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;'
+				<button onclick="gatherSelections()" class='d-flex flex-row btn-coloured btn-lg justify-content-center' style='width: 100%;'
 				>Next Step<i class='bx bx-right-arrow-circle icon' style='font-size: 24px;'></i></button>
 			</div>
 		</div>
