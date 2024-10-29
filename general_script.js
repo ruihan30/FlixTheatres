@@ -103,6 +103,115 @@ function increaseValue(field_id) {
 	numberField.value = currentValue + 1;
 }
 
+// Payment method radio buttons
+document.querySelectorAll('.custom-radio').forEach(function(radio) {
+	radio.addEventListener('change', function() {
+		// Get all radio squares
+		const radioSquares = document.querySelectorAll('.radio-square i');
+
+		radioSquares.forEach(function(icon) {
+			if (radio.checked && radio.id === icon.parentElement.htmlFor) {
+				// Change icon when selected
+				icon.classList.remove('bx-radio-circle'); 
+				icon.classList.add('bx-radio-circle-marked'); 
+			} else {
+				// Change back to the original icon if not selected
+				icon.classList.remove('bx-radio-circle-marked');
+				icon.classList.add('bx-radio-circle');
+			}
+		});
+	});
+});
+
+
+
+function gatherSelections() {
+	// Gather active seat IDs
+	const selectedSeats = [];
+	const seats = document.querySelectorAll('.seat.active'); // Adjust the selector as necessary
+	seats.forEach(seat => {
+		selectedSeats.push(seat.dataset.seatId);
+	});
+
+	// Gather food combo selections
+	const selectedCombos = [];
+	const foodCombos = document.querySelectorAll('.number-field');
+	foodCombos.forEach(combo => {
+		const quantity = parseInt(combo.value);
+		if (quantity > 0) {
+			const comboName = combo.id.replace(/_/g, ' '); // Convert back to original name if necessary
+			selectedCombos.push({
+					name: comboName,
+					quantity: quantity
+			});
+		}
+	});
+
+	// Send data to server (you can use fetch or AJAX)
+	sendDataToServer(selectedSeats, selectedCombos);
+}
+
+// function sendDataToServer(seats, combos) {
+// 	const data = {
+// 		seats: seats,
+// 		combos: combos
+// 	};
+
+// 	console.log('Sending data:', data);
+
+// 	fetch('php_files/send_data.php', {
+// 		method: 'POST',
+// 		headers: {
+// 			'Content-Type': 'application/json',
+// 		},
+// 		body: JSON.stringify(data)
+// 	})
+// 	.then(response =>  {
+// 		// Log the raw response text
+// 		return response.text().then(text => {
+// 				console.log('Raw response:', text);
+// 				return text; // Return raw text for further processing
+// 		});
+// 	})
+// 	.then(text => {
+// 		try {
+// 				const data = JSON.parse(text); // Try to parse as JSON
+// 				console.log('Success:', data);
+// 				// Redirect after successful parsing
+// 				window.location.href = `booking_2.php`;
+// 		} catch (error) {
+// 				console.error('Parsing error:', error);
+// 				console.error('Received response:', text); // Log the response that caused the error
+// 		}
+// 	})
+// 	.catch((error) => {
+// 			console.error('Error:', error);
+// 	});
+// }
+
+function sendDataToServer(seats, combos) {
+	const data = {
+			seats: seats,
+			combos: combos
+	};
+
+	fetch('php_files/send_data.php', {
+			method: 'POST',
+			headers: {
+					'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data)
+	})
+	.then(response => response.json())
+	.then(data => {
+			console.log('Success:', data);
+			window.location.href = `booking_2.php`;
+	})
+	.catch((error) => {
+			console.error('Error:', error);
+	});
+}
+
 // Showtime filter according to cinema
 const buttons = document.querySelectorAll('.cinema-btn');
 

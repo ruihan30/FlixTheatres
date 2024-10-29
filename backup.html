@@ -42,7 +42,9 @@
 			<!-- Steps -->
 			<div class="steps">
 				<div class="d-flex flex-column align-items-center" style="gap: 12px;">
-					<div class="number-field d-flex align-items-center justify-content-center" style="background-color: var(--off-white); color: var(--bg-color-black)">1</div>
+					<div class="number-field d-flex align-items-center justify-content-center" style="background-color: var(--off-white); color: var(--bg-color-black)">
+						<i class='bx bx-check icon' style="font-size: 32px;"></i>
+					</div>
 					<p>Choose your seats & add-ons</p>
 				</div>
 				<div class="d-flex flex-column align-items-center" style="gap: 12px;">
@@ -170,14 +172,46 @@
 
 				<!-- Payment methods -->
 				<div class="d-flex flex-column" style="gap: 12px;">
-					<div class="d-flex flex-row" style="flex-wrap: wrap;">
+					<div class="d-flex flex-row" style="flex-wrap: wrap; gap:20px; row-gap: 40px;">
+
 						<div class="radio-container">
-							<div class="radio-square">
-								<!-- <img src="path_to_your_image.jpg" alt="payment method" class="radio-image"> -->
-								<input type="radio" id="custom-radio" name="custom-radio" class="custom-radio">
-								<i class='bx bx-radio-circle icon' style="font-size: 24px;"></i>
-							</div>
-							<label for="custom-radio" class="custom-radio-label">Credit & Debit Card</label>
+							<input type="radio" id="credit-card" name="payment-method" class="custom-radio">
+							<label for="credit-card" class="radio-square" style="background: url('assets/payment-methods/card.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="credit-card" class="custom-radio-label">Credit & Debit Card</label>
+						</div>
+
+						<div class="radio-container">
+							<input type="radio" id="apple-pay" name="payment-method" class="custom-radio">
+							<label for="apple-pay" class="radio-square" style="background: url('assets/payment-methods/apple-pay.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="apple-pay" class="custom-radio-label">Apple Pay</label>
+						</div>
+
+						<div class="radio-container">
+							<input type="radio" id="google-pay" name="payment-method" class="custom-radio">
+							<label for="google-pay" class="radio-square" style="background: url('assets/payment-methods/google-pay.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="google-pay" class="custom-radio-label">Google Pay</label>
+						</div>
+
+						<div class="radio-container">
+							<input type="radio" id="visa" name="payment-method" class="custom-radio">
+							<label for="visa" class="radio-square" style="background: url('assets/payment-methods/visa.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="visa" class="custom-radio-label">VISA Mastercard</label>
+						</div>
+
+						<div class="radio-container">
+							<input type="radio" id="paynow" name="payment-method" class="custom-radio">
+							<label for="paynow" class="radio-square" style="background: url('assets/payment-methods/paynow.svg');">
+								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
+							</label>
+							<label for="paynow" class="custom-radio-label">PayNow</label>
 						</div>
 					</div>
 				</div>

@@ -45,7 +45,7 @@
           <p class='pg-description'> {$movie_card['content_rating_description']} </p>
         </div>
 
-        <button class='btn-primary btn-md' style='background-color: var(--primary-color-purple); color: var(--off-white);'>Book Now</button>
+        <a style='align-self:end;' href='showtime.php?title=". urlencode($movie_card['title']) . "'><button class='btn-coloured btn-md'>Book Now</button></a>
       </div>
     </div>";
   };

@@ -184,6 +184,19 @@ a {
     gap: 8px;
 }
 
+.btn-coloured {
+    background-color: var(--primary-color-purple);
+    color: var(--off-white);
+    font-family: 'Outfit';
+    border: none;
+    gap: 8px;
+}
+
+.btn-coloured:hover {
+    background-color: #8247B9; 
+    cursor: pointer;
+}
+
 .btn-lg {
     font-size: var(--font-size-sm-md-18);
     font-weight: var(--font-weight-medium);
@@ -215,6 +228,10 @@ a {
 
 .btn-primary:hover {
     background-color: #D0D0D0;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
     cursor: pointer;
 }
 
@@ -741,14 +758,40 @@ table tr.disabled {
 .radio-square {
     width: 240px;
     height: 240px;
-    border: 1px solid var(--secondary-onblack-text-color);
-    background: url('assets/payment-methods/card.svg');
+    border: 1px solid #6E6E6E;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 
 .custom-radio {
     appearance: none;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+}
+
+.custom-radio:checked + .radio-square {
+    border: 1px solid var(--off-white);
+}
+
+.bx-radio-circle, .bx-radio-circle-marked{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+/* Booking 3 page */
+
+.msg {
+    gap: 8px; 
+    padding: 28px; 
+    box-sizing: border-box;
+    background-color: var(--off-white);
+    color: var(--secondary-onwhite-text-color);
+    position: relative;
 }
 
 /* Footer */
