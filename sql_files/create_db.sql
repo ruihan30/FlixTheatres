@@ -17,7 +17,7 @@ CREATE TABLE movies (
     genre1 VARCHAR(50) NOT NULL,
     genre2 VARCHAR(50),
     director VARCHAR(100) NOT NULL,
-    casts VARCHAR(500),
+    casts VARCHAR(500)
 );
 
 CREATE TABLE cinema_halls (
@@ -25,6 +25,15 @@ CREATE TABLE cinema_halls (
     location_name VARCHAR(100),
     hall_name VARCHAR(50) NOT NULL,
     cinema_type VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE showtimes (
+    showtime_id INT PRIMARY KEY AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    hall_id INT NOT NULL,
+    showtime DATETIME NOT NULL,
+    FOREIGN KEY (movie_id) REFERENCES movies(movie_id),
+    FOREIGN KEY (hall_id) REFERENCES cinema_halls(hall_id)
 );
 
 CREATE TABLE bookings (
@@ -39,17 +48,7 @@ CREATE TABLE bookings (
     contact_number VARCHAR(15),
     FOREIGN KEY (movie_id) REFERENCES movies(movie_id),
     FOREIGN KEY (hall_id) REFERENCES cinema_halls(hall_id),
-    FOREIGN KEY (showtime_id) REFERENCES showtimes(showtime_id),
-);
-
-
-CREATE TABLE showtimes (
-    showtime_id INT PRIMARY KEY AUTO_INCREMENT,
-    movie_id INT NOT NULL,
-    hall_id INT NOT NULL,
-    showtime DATETIME NOT NULL,
-    FOREIGN KEY (movie_id) REFERENCES movies(movie_id),
-    FOREIGN KEY (hall_id) REFERENCES cinema_halls(hall_id)
+    FOREIGN KEY (showtime_id) REFERENCES showtimes(showtime_id)
 );
 
 CREATE TABLE seats (
