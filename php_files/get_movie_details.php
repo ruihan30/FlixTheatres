@@ -1,5 +1,6 @@
 <?php 
 $title = $_GET['title'];
+$title = addslashes($title);
 
 // Establish connection
 @$conn = new mysqli('localhost', 'root', '', 'flix_theatres');
@@ -13,10 +14,12 @@ if (mysqli_connect_errno()) {
 // Query to fetch movies
 $query = 
 "SELECT * FROM movies m 
-JOIN showtimes s ON m.movie_id = s.movie_id
-JOIN cinema_halls c ON c.hall_id = s.hall_id
+LEFT JOIN showtimes s ON m.movie_id = s.movie_id
+LEFT JOIN cinema_halls c ON c.hall_id = s.hall_id
 WHERE title = '" . $title . "'";
 $result = $conn->query($query);
+
+// print_r($query);
 
 // Save SQL query result in array
 if ($result->num_rows > 0) {

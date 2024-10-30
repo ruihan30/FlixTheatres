@@ -151,44 +151,6 @@ function gatherSelections() {
 	sendDataToServer(selectedSeats, selectedCombos);
 }
 
-// function sendDataToServer(seats, combos) {
-// 	const data = {
-// 		seats: seats,
-// 		combos: combos
-// 	};
-
-// 	console.log('Sending data:', data);
-
-// 	fetch('php_files/send_data.php', {
-// 		method: 'POST',
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 		},
-// 		body: JSON.stringify(data)
-// 	})
-// 	.then(response =>  {
-// 		// Log the raw response text
-// 		return response.text().then(text => {
-// 				console.log('Raw response:', text);
-// 				return text; // Return raw text for further processing
-// 		});
-// 	})
-// 	.then(text => {
-// 		try {
-// 				const data = JSON.parse(text); // Try to parse as JSON
-// 				console.log('Success:', data);
-// 				// Redirect after successful parsing
-// 				window.location.href = `booking_2.php`;
-// 		} catch (error) {
-// 				console.error('Parsing error:', error);
-// 				console.error('Received response:', text); // Log the response that caused the error
-// 		}
-// 	})
-// 	.catch((error) => {
-// 			console.error('Error:', error);
-// 	});
-// }
-
 function sendDataToServer(seats, combos) {
 	const data = {
 			seats: seats,
