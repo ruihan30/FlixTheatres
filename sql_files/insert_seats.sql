@@ -71,7 +71,7 @@ FROM (
     UNION ALL SELECT 'G8', 'Standard', FALSE -- Unavailable
     UNION ALL SELECT 'G9', 'Standard', TRUE
 ) sts
-JOIN showtimes s ON s.showtime = '2024-10-26 19:30:00'
+JOIN showtimes s ON s.showtime = '2024-10-30 19:30:00'
 JOIN movies m ON m.movie_id = s.movie_id AND m.title = 'Alien Romulus'
 JOIN cinema_halls c ON c.location_name = 'FT Bishan';
 
