@@ -32,7 +32,8 @@ INSERT INTO movies (
 (
   'Marvel Studio''s Deadpool & Wolverine', 
   'https://m.media-amazon.com/images/I/810zZ6ger0L._AC_UF894,1000_QL80_.jpg', 
-  'https://miro.medium.com/v2/resize:fit:1400/1*B6zJAX5gnzxj7AYOtR8reQ.png',
+  'https://miro.medium.com/v2/resize:fit:1400/1*B6zJAX5gnzxj7AYOtR8reQ.png', 
+  'M18', 'Violence & coarse language', 4.3, 
   'https://www.youtube.com/watch?v=73_1biulkYk', 
   'Deadpool''s peaceful existence comes crashing down when the Time Variance Authority recruits him to help safeguard the multiverse. He soon unites with his would-be pal, Wolverine, to complete the mission and save his world from an existential threat.', 
   'English (Chinese Subbed)', 127, 
@@ -43,11 +44,10 @@ INSERT INTO movies (
   'Jung Kook: I Am Still', 
   'https://m.media-amazon.com/images/M/MV5BNzJmNDBkOTMtYmI0OS00NGM1LWE3MjEtYzliYjNiY2FmZjUzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 
   'https://philstarlife.s3.ap-east-1.amazonaws.com/pslife_photos/Yoniel_temp/August%202024/banner%20jung%20kook.jpg',
-  'PG', NULL , 5, 
+  'PG', NULL, 5, 
   'https://www.youtube.com/watch?v=LWkh_hXeEeg', 
   'Through exclusive, unseen interviews and behind-the-scenes footage, alongside electrifying concert performances, this brand new film showcases Jung Kook''s eight-month journey, capturing his unwavering dedication and growth.', 
   'English (Chinese Subbed)', 93, 
   'Documentary', NULL, 
   'Park Jun Soo', 'Jimin, Jung Kook'
-)
-;
+);

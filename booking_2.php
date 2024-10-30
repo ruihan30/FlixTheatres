@@ -231,19 +231,22 @@ if ($result->num_rows > 0) {
 				</div>
 
 				<!-- Inputs -->
-				<form action="booking_3.php" method="post" class="d-flex flex-column" style="gap: 48px;">
+				<form action="booking_3.php" method="post" class="d-flex flex-column" style="gap: 48px;" onsubmit="return validateForm()">
 				<div class="d-flex flex-column personal-details" style="gap: 8px;">
 					<div>
 						<label for="name">* Name:</label>
-						<input type="text" id="name" name="name" required placeholder="Alex Tan">
+						<input type="text" id="name" name="name" required placeholder="Alex Tan" oninput="chkName(this.value)">
+						<div class="errorMessage" id="nameError"></div>
 					</div>
 					<div>
 						<label for="email">* Email:</label>
-    				<input type="email" id="email" name="email" required placeholder="abc@email.com">
+    					<input type="email" id="email" name="email" required placeholder="abc@email.com" oninput="chkEmail(this.value)">
+						<div class="errorMessage" id="emailError"></div>
 					</div>
 					<div>
 						<label for="contact">Contact Number:</label>
-    				<input type="tel" id="contact" name="contact" pattern="[0-9]{8,15}" placeholder="1234 5678">
+    					<input type="tel" id="contact" name="contact" required pattern="[0-9]{8,15}" placeholder="1234 5678" oninput="chkContactNumber(this.value)">
+						<div class="errorMessage" id="contactNumberError"></div>
 					</div>
 				</div>
 
@@ -252,7 +255,7 @@ if ($result->num_rows > 0) {
 					<div class="d-flex flex-row" style="flex-wrap: wrap; gap:20px; row-gap: 40px;">
 
 						<div class="radio-container">
-							<input type="radio" id="credit-card" name="payment-method" class="custom-radio">
+							<input type="radio" id="credit-card" name="payment-method" class="custom-radio" required>
 							<label for="credit-card" class="radio-square" style="background: url('assets/payment-methods/card.svg');">
 								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
 							</label>
@@ -260,7 +263,7 @@ if ($result->num_rows > 0) {
 						</div>
 
 						<div class="radio-container">
-							<input type="radio" id="apple-pay" name="payment-method" class="custom-radio">
+							<input type="radio" id="apple-pay" name="payment-method" class="custom-radio" required>
 							<label for="apple-pay" class="radio-square" style="background: url('assets/payment-methods/apple-pay.svg');">
 								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
 							</label>
@@ -268,7 +271,7 @@ if ($result->num_rows > 0) {
 						</div>
 
 						<div class="radio-container">
-							<input type="radio" id="google-pay" name="payment-method" class="custom-radio">
+							<input type="radio" id="google-pay" name="payment-method" class="custom-radio" required>
 							<label for="google-pay" class="radio-square" style="background: url('assets/payment-methods/google-pay.svg');">
 								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
 							</label>
@@ -276,7 +279,7 @@ if ($result->num_rows > 0) {
 						</div>
 
 						<div class="radio-container">
-							<input type="radio" id="visa" name="payment-method" class="custom-radio">
+							<input type="radio" id="visa" name="payment-method" class="custom-radio" required>
 							<label for="visa" class="radio-square" style="background: url('assets/payment-methods/visa.svg');">
 								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
 							</label>
@@ -284,7 +287,7 @@ if ($result->num_rows > 0) {
 						</div>
 
 						<div class="radio-container">
-							<input type="radio" id="paynow" name="payment-method" class="custom-radio">
+							<input type="radio" id="paynow" name="payment-method" class="custom-radio" required>
 							<label for="paynow" class="radio-square" style="background: url('assets/payment-methods/paynow.svg');">
 								<i class='bx bx-radio-circle icon' style="font-size: 32px;"></i>
 							</label>
@@ -292,6 +295,7 @@ if ($result->num_rows > 0) {
 						</div>
 					</div>
 				</div>
+				<div class="errorMessage" id="paymentMethodError"></div>
 
 				<!-- Buttons -->
 				<div class="d-flex flex-row" style="gap: 16px;">
@@ -308,6 +312,7 @@ if ($result->num_rows > 0) {
 
 	</div>
 
+	<script type="text/javascript" src="payment_details_validationr.js"></script>
 	
 	<!-- Footer -->
 	<footer>
