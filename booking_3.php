@@ -16,6 +16,17 @@
 
 <?php 
 
+// Establish connection
+@$conn = new mysqli('localhost', 'root', '', 'flix_theatres');
+
+// Check connection
+if (mysqli_connect_errno()) {
+	echo 'Error: Could not connect to database.  Please try again later.';
+	exit;
+}
+
+$selected_seats_qty = 0;
+
 session_start(); 
 if(isset($_SESSION['title'])) {
 	$title = $_SESSION['title'];
@@ -53,15 +64,6 @@ if(isset($_SESSION['title'])) {
 $name = $_POST['name'];
 $email = $_POST['email']; 
 $contact = $_POST['contact'];
-
-// Establish connection
-@$conn = new mysqli('localhost', 'root', '', 'flix_theatres');
-
-// Check connection
-if (mysqli_connect_errno()) {
-	echo 'Error: Could not connect to database.  Please try again later.';
-	exit;
-}
 
 // For debugging
 // echo "<h2>Session Variables:</h2>";

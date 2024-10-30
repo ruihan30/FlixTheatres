@@ -22,7 +22,7 @@
   foreach($datesArray as $index => $date) {
     echo "
       <div>
-        <div class='date-container";
+        <div class='date-container";  
           if ($index != 0) { echo " disabled";}
         echo "'>
           <div class='date'>

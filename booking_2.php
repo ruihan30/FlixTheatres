@@ -12,6 +12,7 @@
 
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script> 
   <script defer src="general_script.js"></script>
+	<script defer src="scripts/payment_details_validation.js"></script>
 </head>
 
 <?php 
@@ -232,26 +233,37 @@ if ($result->num_rows > 0) {
 
 				<!-- Inputs -->
 				<form action="booking_3.php" method="post" class="d-flex flex-column" style="gap: 48px;" onsubmit="return validateForm()">
-				<div class="d-flex flex-column personal-details" style="gap: 8px;">
-					<div>
-						<label for="name">* Name:</label>
-						<input type="text" id="name" name="name" required placeholder="Alex Tan" oninput="chkName(this.value)">
-						<div class="errorMessage" id="nameError"></div>
+				<div class="d-flex flex-column personal-details">
+					<div class="d-flex flex-column" style="gap: 8px;">
+						<div style="width: 100%;">
+							<label for="name">* Name:</label>
+							<input type="text" id="name" name="name" required placeholder="Alex Tan" oninput="chkName(event)">
+						</div>
+						<span class="errorMessage" id="nameError"></span>
 					</div>
-					<div>
-						<label for="email">* Email:</label>
-    					<input type="email" id="email" name="email" required placeholder="abc@email.com" oninput="chkEmail(this.value)">
-						<div class="errorMessage" id="emailError"></div>
+
+					<div class="d-flex flex-column" style="gap: 8px;">
+						<div style="width: 100%;">
+							<label for="email">* Email:</label>
+							<input type="email" id="email" name="email" required placeholder="abc@email.com" oninput="chkEmail(event)">
+						</div>
+						<span class="errorMessage" id="emailError"></span>
 					</div>
-					<div>
-						<label for="contact">Contact Number:</label>
-    					<input type="tel" id="contact" name="contact" required pattern="[0-9]{8,15}" placeholder="1234 5678" oninput="chkContactNumber(this.value)">
-						<div class="errorMessage" id="contactNumberError"></div>
+
+					<div class="d-flex flex-column" style="gap: 8px;">
+						<div style="width: 100%;">
+							<label for="contact">Contact Number:</label>
+							<input type="number" id="contact" name="contact" required pattern="[0-9]{8,15}" placeholder="1234 5678" oninput="chkContactNumber(event)">
+						</div>
+						<span class="errorMessage" id="contactNumberError"></span>
 					</div>
+
+				
 				</div>
 
 				<!-- Payment methods -->
-				<div class="d-flex flex-column" style="gap: 12px;">
+				<div class="d-flex flex-column" style="gap: 20px;">
+					<h2 style="align-self: start; font-size: var(--font-size-lg-24);" >Select your payment method</h2>
 					<div class="d-flex flex-row" style="flex-wrap: wrap; gap:20px; row-gap: 40px;">
 
 						<div class="radio-container">

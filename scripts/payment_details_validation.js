@@ -9,16 +9,18 @@ function validateForm() {
     chkName({ currentTarget: document.getElementById("name") });
     chkEmail({ currentTarget: document.getElementById("email") });
     chkContactNumber({ currentTarget: document.getElementById("contact") });
-    chkPaymentMethod({ currentTarget: document.getElementsByName("payment-method") });
+    // chkPaymentMethod({ currentTarget: document.getElementsByName("payment-method") });
 
     // Check if any error messages are present
     const nameError = document.getElementById("nameError").textContent;
     const emailError = document.getElementById("emailError").textContent;
     const contactNumberError = document.getElementById("contactNumberError").textContent;
-    const paymentMethodError = document.getElementById("paymentMethodError").textContent;
+    // const paymentMethodError = document.getElementById("paymentMethodError").textContent;
 
     // If any field has an error message, prevent form submission
-    if (nameError || emailError || contactNumberError || paymentMethodError) {
+    if (nameError || emailError || contactNumberError) {
+        // focus and select depending on which one is wrong
+        
         return false; // Prevent form submission
     }
 
@@ -32,6 +34,7 @@ function chkName(event){
     var nameError = document.getElementById("nameError");
 
     if (pos != 0){
+        nameError.style.display = "block";
         nameError.textContent = "Invalid name, name should start with a capital letter e.g. John";
     }
     else {
@@ -45,6 +48,7 @@ function chkEmail(event){
     var emailError = document.getElementById("emailError");
 
     if (pos != 0){
+        emailError.style.display = "block";
         emailError.textContent = "Invalid email, email should be in the form abc@xyz.com";
     }
     else {
@@ -53,35 +57,15 @@ function chkEmail(event){
 }
 
 function chkContactNumber(event){
-    var myContact = event.currentTarget.value;
+    var myContact = event.currentTarget;
     var pos = myContact.value.search(/^[\d]{8}$/);
     var contactNumberError = document.getElementById("contactNumberError");
     
     if (pos != 0){
+        contactNumberError.style.display = "block";
         contactNumberError.textContent = "Invalid contact number, contact number should be 8 digits long.";
     }
     else {
         contactNumberError.textContent = "";
-    }
-}
-
-function chkPaymentMethod(event) {
-    var paymentMethodElements = document.getElementsByName("payment-method");
-    var paymentMethodError = document.getElementById("paymentMethodError");
-    var isSelected = false;
-
-    // Check if any radio button is checked
-    for (var i = 0; i < paymentMethodElements.length; i++) {
-        if (paymentMethodElements[i].checked) {
-            isSelected = true;
-            break;
-        }
-    }
-
-    // Display error message if no radio button is selected
-    if (!isSelected) {
-        paymentMethodError.textContent = "Please select a payment method.";
-    } else {
-        paymentMethodError.textContent = "";
     }
 }

@@ -574,6 +574,14 @@ h2 {
     width: 380px;
     height: 380px;
     flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.location-img {
+    width: auto;
+    height: 100%;
 }
 
 .cinema-info {
@@ -745,6 +753,17 @@ table tr.disabled {
 .personal-details div {
     align-items: center;
     gap: 20px;
+}
+
+.errorMessage {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 184px;
+    box-sizing: border-box;
+    text-align: left;
+    width: 100%;
+    color: var(--error-color);
 }
 
 .radio-container {
