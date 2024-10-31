@@ -27,9 +27,11 @@ if(isset($_SESSION['title'])) {
 	$combinedString = "$date, $time";
 	$dateTime = DateTime::createFromFormat('D, d M Y, h:i A', $combinedString);
 	$showtime = $dateTime -> format('Y-m-d H:i:s');
-} else {
-	echo "no session variables";
-}
+} 
+
+// else {
+// 	echo "no session variables";
+// }
 
 $selected_seats = $_SESSION['selected_seats'];
 $selected_combos = $_SESSION['selected_combos'];

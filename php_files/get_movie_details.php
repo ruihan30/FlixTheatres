@@ -56,9 +56,9 @@ if ($result->num_rows > 0) {
   };
 };
 
-// echo "<pre>"; 
-// print_r($movie_details); 
-// echo "</pre>";
+echo "<pre>"; 
+print_r($movie_details); 
+echo "</pre>";
 
 echo "
   <div class='container d-flex flex-row' style='gap: 12px;'>";

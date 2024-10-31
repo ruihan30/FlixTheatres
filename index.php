@@ -15,6 +15,8 @@
 	<script defer src="scripts/carousel.js"></script>
 </head>
 
+<?php include 'php_files/save_cinemas.php'; ?>
+
 <body>
 
 	<!-- Navbar -->
@@ -23,8 +25,8 @@
 			<div class="d-flex flex-row align-items-center nav-items">
 				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
 				<ul class="d-flex flex-row">
-					<li><a href="">All Movies</a></li>
-					<li><a href="">Cinemas</a></li>
+					<li><a href="all_movies.php">All Movies</a></li>
+					<li><a href="cinemas.php">Cinemas</a></li>
 				</ul>
 			</div>
 			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
