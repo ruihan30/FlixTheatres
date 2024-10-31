@@ -171,6 +171,9 @@ const cinemasByArea = {
 function cinemasInArea(){
     const selectedArea = document.getElementById("cinemasFilter").value;
 
+	const default_cinemas = document.getElementById("default-cinemas");
+	default_cinemas.style.display = 'none';
+
     if (cinemasByArea[selectedArea]) {
         const cinemaDetails = cinemasByArea[selectedArea];
 
@@ -186,6 +189,10 @@ function cinemasInArea(){
             const cinemaTypePREMIERE = cinemaDetails[`cinemaTypePREMIERE${i}`];
 
             const cinemaCard = document.getElementById(`cinemaCard${i}`);
+
+			// const button = document.getElementsByClassName('cinema-showtime-btn')[i];
+			// button.href = '';
+			// console.log(locationName, i);
 
             if (locationName && cinemaAddress && cinemaHalls && nearestMRT && busServices && locationImage) {
                 document.getElementById(`locationName${i}`).innerHTML = locationName;

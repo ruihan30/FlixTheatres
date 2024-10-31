@@ -12,6 +12,7 @@
 
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script> 
   <script defer src="general_script.js"></script>
+	<script defer src="scripts/cinema_filter.js"></script>
 </head>
 
 <body>
@@ -35,32 +36,39 @@
 		
 		<div class="d-flex flex-row" style="height: 48px; gap: 28px; width: 780px;">
 			<h2>View available showtimes: </h2>
-			<select id="cinemasFilter">
-				<option value="">at your nearest Flix Theatre</option>
-				<option value="">Flix Theatres Jurong Point</option>
-				<option value="">South</option>
-				<option value="">East</option>
-				<option value="">West</option>
+			<select id="cinemasFilter" onchange="filterCinemas()">
+				<option value="default">at your nearest Flix Theatre</option>
+				<option value="Bedok">Flix Theatres Bedok</option>
+				<option value="Bishan">Flix Theatres Bishan</option>
+				<option value="Bugis+">Flix Theatres Bugis+</option>
+				<option value="Cineleisure">Flix Theatres Cineleisure</option>
+				<option value="City Square">Flix Theatres City Square</option>
+				<option value="Funan">Flix Theatres Funan</option>
+				<option value="Grand, Great World">Flix Theatres Grand, Great World</option>
+				<option value="JCube">Flix Theatres JCube</option>
+				<option value="Jurong Point">Flix Theatres Jurong Point</option>
+				<option value="Katong">Flix Theatres Katong</option>
+				<option value="Paya Lebar">Flix Theatres Paya Lebar</option>
+				<option value="Sembawang">Flix Theatres Sembawang</option>
+				<option value="TheRailMall">Flix Theatres TheRailMall</option>
+				<option value="Yishun">Flix Theatres Yishun</option>
 			</select>
 		</div>
 
 		<div class="d-flex flex-row justify-content-center cinema-card-box" style="gap:20px;">
-			<div class="d-flex flex-column cinema-info-box test">
+			<div class="d-flex flex-column cinema-info-box">
 				<div class="d-flex flex-column" style="gap: 24px;">
-					<h1 style="color: var(--bg-color-black)">Flix Theatres Jurong Point</h1>
-					<div class="d-flex flex-row" style="gap: 24px;">
-						<img src="assets/cinema-types/imax-black.svg" alt="imax">
-						<img src="assets/cinema-types/premiere-black.svg" alt="lumiere">
-						<img src="assets/cinema-types/lumiere-black.svg" alt="premiere">
-					</div>
-					<p>1 Jurong West Central, #03-26/26A, Jurong Point, Singapore 648886</p>
+					<h1 style="color: var(--secondary-onwhite-text-color)" id="cinema_name">Select your cinema</h1>
+					<div class="d-flex flex-row" style="gap: 24px;" id="cinema_type"></div>
+					<p id="cinema_address"></p>
 				</div>
 
-				<a href="" style="align-self: end;"><button class="btn-primary btn-md" style="background-color: var(--primary-color-purple); color: var(--off-white);">Directions</button></a>
+				<button id="cinema_directions" style="align-self: end;" class="btn-coloured btn-md">Directions</button>
+				<div class="decoration-box"></div>
 			</div>
 
-			<div class="cinema-img test">img</div>
-			<div class="decoration-box"></div>
+			<div class="cinema-img"><img id="cinema_img"></div>
+			
 		</div>
 
 	</div>

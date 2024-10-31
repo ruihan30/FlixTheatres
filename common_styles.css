@@ -425,6 +425,7 @@ h1 {
     padding: 28px;
     justify-content: space-between;
     background-color: var(--off-white);
+    position: relative;
 }
 
 .decoration-box {
@@ -568,6 +569,12 @@ h2 {
     width: 100%;    
     gap: 20px;
     display: none;
+}
+
+.cinema-card-default {
+    flex-grow: 1;
+    width: 100%;    
+    gap: 20px;
 }
 
 .cinema-img {
