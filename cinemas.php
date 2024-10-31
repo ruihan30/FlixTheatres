@@ -24,9 +24,7 @@ if(isset($_SESSION['cinemas'])) {
 	$cinemas = $_SESSION['cinemas'];
 } 
 
-if ($_GET['cinema']) {
-	$first_cinema = $_GET['cinema'];
-}
+$first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 
 ?>
 
@@ -108,7 +106,7 @@ if ($_GET['cinema']) {
 										</div>
 									</div>
 
-									<a class='cinema-showtime-btn' href='' style='align-self: end'><button class='btn-primary btn-lg'>Showtimes</button></a>
+									<a href='all_movies.php?cinema=" . urlencode($cinema_details['locationName']) . "' style='align-self: end'><button class='btn-primary btn-lg'>Showtimes</button></a>
 								</div>
 							</div>";
 						}
@@ -158,7 +156,7 @@ if ($_GET['cinema']) {
 										</div>
 									</div>
 
-									<a class='cinema-showtime-btn' href='' style='align-self: end'><button class='btn-primary btn-lg'>Showtimes</button></a>
+									<a href='all_movies.php?cinema=" . urlencode($cinema_details['locationName']) . "' style='align-self: end'><button class='btn-primary btn-lg'>Showtimes</button></a>
 								</div>
 							</div>";
 						}
@@ -206,7 +204,7 @@ if ($_GET['cinema']) {
 									</div>
 								</div>
 
-								<a class='cinema-showtime-btn' href='' style='align-self: end'><button class='btn-primary btn-lg'>Showtimes</button></a>
+								<a href='all_movies.php?cinema=" . urlencode($cinema_details['locationName']) . "' style='align-self: end'><button class='btn-primary btn-lg'>Showtimes</button></a>
 							</div>
 						</div>";
 					}
@@ -290,7 +288,7 @@ if ($_GET['cinema']) {
 					</div>
 				</div>
 
-				<a class="test" href="" style="align-self: end"><button class="btn-primary btn-lg">Showtimes</button></a>
+				<a class="cinema-showtime-btn"  href="" style="align-self: end"><button class="btn-primary btn-lg">Showtimes</button></a>
 			</div>
 		</div>
 
@@ -330,7 +328,7 @@ if ($_GET['cinema']) {
 					</div>
 				</div>
 
-				<a class="test" href="" style="align-self: end"><button class="btn-primary btn-lg">Showtimes</button></a>
+				<a class="cinema-showtime-btn"  href="" style="align-self: end"><button class="btn-primary btn-lg">Showtimes</button></a>
 			</div>
 		</div>
 
@@ -370,7 +368,7 @@ if ($_GET['cinema']) {
 					</div>
 				</div>
 
-				<a class="test" href="" style="align-self: end"><button class="btn-primary btn-lg">Showtimes</button></a>
+				<a class="cinema-showtime-btn"  href="" style="align-self: end"><button class="btn-primary btn-lg">Showtimes</button></a>
 			</div>
 		</div>
 

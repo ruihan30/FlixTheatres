@@ -16,7 +16,7 @@
     }
   };
 
-  echo "<div id='movieList'>";
+  echo "<div class='movieList'>";
 
   foreach ($movies as $movie_card) {
     echo "

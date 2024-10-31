@@ -190,9 +190,8 @@ function cinemasInArea(){
 
             const cinemaCard = document.getElementById(`cinemaCard${i}`);
 
-			// const button = document.getElementsByClassName('cinema-showtime-btn')[i];
-			// button.href = '';
-			// console.log(locationName, i);
+			const button = document.getElementsByClassName('cinema-showtime-btn')[i-1];
+			button.href = 'all_movies.php?cinema=' + encodeURIComponent(locationName).replace(/%20/g, "+");
 
             if (locationName && cinemaAddress && cinemaHalls && nearestMRT && busServices && locationImage) {
                 document.getElementById(`locationName${i}`).innerHTML = locationName;

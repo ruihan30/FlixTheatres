@@ -360,7 +360,7 @@ h1 {
     width: 140px;
 }
 
-#movieList {
+.movieList {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 28px;
@@ -445,6 +445,11 @@ h1 {
     width: 290px;
 }
 
+.day-tab.active {
+    background-color: var(--off-white);
+    color: var(--bg-color-black);
+}
+
 /* Showtime Page */
 
 .showtime-movie-poster {
@@ -488,12 +493,6 @@ h1 {
 .cinema-btn {
     color: var(--bg-color-black);
     border: 1px solid var(--bg-color-black);
-}
-
-.cinema-btn.active {
-    background-color: var(--primary-color-purple);
-    color: var(--off-white);
-    border: 1px solid var(--primary-color-purple);
 }
 
 .selected-cinema {
@@ -542,6 +541,12 @@ h1 {
     gap: 8px;
     padding: 16px 4px;
     display: none;
+}
+
+.showtimes-movies {
+    gap: 8px;
+    padding: 16px 4px;
+    display: flex;
 }
 
 /* Cinemas Page */

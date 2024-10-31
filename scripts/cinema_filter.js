@@ -203,10 +203,31 @@ function filterCinemas() {
 				cinema_type.appendChild(img);
 			}
 
-			cinema_directions.addEventListener("click", () => handleClick(cinema));
+			// cinema_directions.addEventListener("click", () => handleClick(cinema));
+      // cinema_directions.addEventListener("click", function() {
+      //   window.location.href = 'cinemas.php?cinema=' + encodeURIComponent(cinema.locationName).replace(/%20/g, "+");
+      // });
+      cinema_directions.addEventListener("click", () => handleClick(cinema.locationName));
 			cinema_img.src = cinema.img;
+
+      // Filtering showtimes
+      const reset_elements = document.getElementsByClassName('showtimes-movies');
+      console.log(reset_elements);
+      for (var i = 0; i < reset_elements.length; i++) {
+        reset_elements[i].style.display = 'none'; 
+      }
+    
+      let filter_cinema = cinema.locationName.replace("Flix Theatres", "FT");
+      filter_cinema = filter_cinema.replace(" ", "_");
+      const set_elements = document.getElementsByClassName(filter_cinema);
+      for (var i = 0; i < set_elements.length; i++) {
+        set_elements[i].style.display = 'flex'; 
+      }
+
 		}
 	});
+
+
 
 	if (input === 'default') {
 		cinema_name.innerHTML= 'Select your cinema';
@@ -217,56 +238,6 @@ function filterCinemas() {
 	}
 };
 
-// function handleClick(cinema_array) {
-// 	console.log(cinema_array.locationName);
-// 	const data = cinemas;
-
-// 	fetch('php_files/send_cinema_data.php', {
-// 			method: 'POST',
-// 			headers: {
-// 					'Content-Type': 'application/json',
-// 			},
-// 			body: JSON.stringify(data)
-// 	})
-// 	.then(response => response.json())
-// 	.then(data => {
-// 			console.log('Success:', data);
-// 			window.location.href = `cinemas.php?cinema=` + encodeURIComponent(cinema_array.locationName);
-// 	})
-// 	.catch((error) => {
-// 			console.error('Error:', error);
-// 	});
-// }
-
-function handleClick(cinema_array) {
-	console.log(cinema_array.locationName);
-	const data = { cinemas: cinemas };
-
-	fetch('php_files/send_cinema_data.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
-	})
-	.then(response => {
-			if (!response.ok) {
-					throw new Error(`HTTP error! status: ${response.status}`);
-			}
-			return response.text(); // Get the response as text first
-	})
-	.then(text => {
-			if (text) {
-					return JSON.parse(text); // Parse JSON if not empty
-			}
-			throw new Error('Empty response from server');
-	})
-	.then(data => {
-			console.log('Success:', data);
-			window.location.href = `cinemas.php?cinema=` + encodeURIComponent(cinema_array.locationName);
-	})
-	.catch((error) => {
-			console.error('Error:', error);
-	});
-
+function handleClick(cinema) {
+  window.location.href = 'cinemas.php?cinema=' + encodeURIComponent(cinema).replace(/%20/g, "+");
 }
