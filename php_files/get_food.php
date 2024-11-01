@@ -11,7 +11,7 @@ if ($result->num_rows > 0) {
       'combo_id' => $row['combo_id'],
       'combo_name' => $row['combo_name'],
       'price' => $row['price'],
-      'picture_url' => $row['picture_url'],
+      'picture_url' => $row['img_url'],
     ];
   };
 };

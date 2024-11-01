@@ -129,6 +129,8 @@ if(!empty($_SESSION)) {
 	}
 }
 
+include 'php_files/email_confirmation.php';
+
 session_unset();
 session_destroy();
 

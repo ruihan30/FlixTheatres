@@ -30,7 +30,7 @@ function validateForm() {
 
 function chkName(event){
     var myName = event.currentTarget;
-    var pos = myName.value.search(/^[A-Z]+[a-z]+$/);
+    var pos = myName.value.search(/^(?:[A-Z][a-z]*(?:\s[A-Z][a-z]*)*)?$/);
     var nameError = document.getElementById("nameError");
 
     if (pos != 0){
