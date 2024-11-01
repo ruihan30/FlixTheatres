@@ -65,23 +65,6 @@ $name = $_POST['name'];
 $email = $_POST['email']; 
 $contact = $_POST['contact'];
 
-// For debugging
-// echo "<h2>Session Variables:</h2>";
-// echo "Title: " . htmlspecialchars($title) . "<br>";
-// echo "Cinema: " . htmlspecialchars($cinema) . "<br>";
-// echo "Date: " . htmlspecialchars($date) . "<br>";
-// echo "Time: " . htmlspecialchars($time) . "<br>";
-// echo "Showtime: " . htmlspecialchars($showtime) . "<br>";
-// echo "Name: " . htmlspecialchars($name) . "<br>";
-// echo "Email: " . htmlspecialchars($email) . "<br>";
-// echo "Contact Number: " . htmlspecialchars($contact) . "<br>";
-// echo "Selected Seats: <pre>" . htmlspecialchars(implode(", ", $selected_seats)) . "</pre><br>";
-// echo "Selected Combos:<br>";
-// foreach ($selected_combos as $combo) {
-//     echo "Combo Name: " . htmlspecialchars($combo['name']) . ", Quantity: " . intval($combo['quantity']) . 
-// 		", Price: " . htmlspecialchars($combo['sub-price'])  . "<br><br>";
-// }
-
 if(!empty($_SESSION)) {
 	// Insert into bookings table
 	$query = 
@@ -91,7 +74,6 @@ if(!empty($_SESSION)) {
 	JOIN cinema_halls c ON c.location_name = '{$cinema}'
 	JOIN showtimes s ON s.showtime = '{$showtime}'
 	WHERE m.title = '{$title}';";
-	echo "{$query}";
 	$result = $conn->query($query);
 
 	$booking_id = $conn->insert_id; 
@@ -102,7 +84,6 @@ if(!empty($_SESSION)) {
 	SELECT m.movie_id, {$selected_seats_qty}, 19.50, {$booking_id}
 	FROM movies m
 	WHERE m.title = '{$title}'";
-	echo "{$query}";
 	$result = $conn->query($query);
 
 	// Insert into combos_ordered table
@@ -139,16 +120,15 @@ session_destroy();
 <body>
 
 	<!-- Navbar -->
-	<div class="d-flex justify-content-center" style="width: 100vw; position: sticky; padding: 0px;">
+	<div class="d-flex justify-content-center navbar-wrapper">
 		<nav id="navbar" class="container d-flex flex-row">
 			<div class="d-flex flex-row align-items-center nav-items">
-				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
+				<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
 				<ul class="d-flex flex-row">
-					<li><a href="">All Movies</a></li>
-					<li><a href="">Cinemas</a></li>
+					<a href="all_movies.php"><li>All Movies</li></a>
+					<a href="cinemas.php"><li>Cinemas</li></a>
 				</ul>
 			</div>
-			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
 		</nav>
 	</div>
 
@@ -200,13 +180,11 @@ session_destroy();
 		
 		<!-- Buttons -->
 		<div class="d-flex flex-row" style="gap: 16px;">
-			<a href="#" style="width: 100%;"><button class="d-flex flex-row btn-secondary btn-lg justify-content-center" style="width: 100%; cursor: pointer;"
+			<a href="all_movies.php" style="width: 100%;"><button class="d-flex flex-row btn-secondary btn-lg justify-content-center" style="width: 100%; cursor: pointer;"
 				><i class='bx bx-movie-play icon' style="font-size: 24px;"></i>Discover more movies</button></a>
 			<a href="index.php" style="width: 100%;"><button class="d-flex flex-row btn-primary btn-lg justify-content-center" style="background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;"
 				><i class='bx bx-home-smile icon' style="font-size: 24px;"></i>Back to Home</button></a>
 		</div>
-
-		
 
 	</div>
 
@@ -216,7 +194,7 @@ session_destroy();
 		<div class="container d-flex flex-column">
 			<div class="container footer-wrapper">
 				<div>
-					<img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px">
+					<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px"></a>
 				</div>
 				<div class="d-flex flex-column" style="gap:20px;">
 					<p class="footer-header">Follow Us</p>
@@ -236,7 +214,7 @@ session_destroy();
 				<div class="d-flex flex-column" style="gap:20px;">
 					<p class="footer-header">Information</p>
 					<div class="footer-links">
-						<a href="">Home</a>
+						<a href="index.php">Home</a>
 						<a href="">Privacy Policy</a>
 						<a href="">About Flix</a>
 						<a href="">Terms of Service</a>

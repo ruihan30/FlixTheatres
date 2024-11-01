@@ -17,6 +17,7 @@
 
 <?php 
 
+// Get variables from session
 session_start(); 
 if(isset($_SESSION['title'])) {
 	$title = $_SESSION['title'];
@@ -28,10 +29,6 @@ if(isset($_SESSION['title'])) {
 	$dateTime = DateTime::createFromFormat('D, d M Y, h:i A', $combinedString);
 	$showtime = $dateTime -> format('Y-m-d H:i:s');
 } 
-
-// else {
-// 	echo "no session variables";
-// }
 
 $selected_seats = $_SESSION['selected_seats'];
 $selected_combos = $_SESSION['selected_combos'];
@@ -63,21 +60,18 @@ if ($result->num_rows > 0) {
 	<div class="d-flex justify-content-center navbar-wrapper">
 		<nav id="navbar" class="container d-flex flex-row">
 			<div class="d-flex flex-row align-items-center nav-items">
-				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
+				<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
 				<ul class="d-flex flex-row">
-					<li><a href="">All Movies</a></li>
-					<li><a href="">Cinemas</a></li>
+					<a href="all_movies.php"><li>All Movies</li></a>
+					<a href="cinemas.php"><li>Cinemas</li></a>
 				</ul>
 			</div>
-			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
 		</nav>
 	</div>
-
 
 	<!-- Movie Details -->
 	<div class="container d-flex flex-row" style="gap: 20px; margin: 20px 0px 72px 0px;">
 
-		<!-- Maybe session for timing and all the data to navigate between steps -->
 		<!-- Left -->
 		<div style="width: 360px;">
 			<?php echo "<img src='{$poster_url}' alt='{$title}' class='booking_poster'>"; ?>
@@ -111,6 +105,7 @@ if ($result->num_rows > 0) {
 				<h1><?php echo "{$title}"; ?></h1>
 				<div class="d-flex flex-row" style="gap: 36px;">
 
+					<!-- Display booking information -->
 					<?php 
 						echo "
 						<div class='d-flex flex-column' style='flex-grow: 1; flex-basis: 0; gap: 8px;'>
@@ -236,6 +231,7 @@ if ($result->num_rows > 0) {
 				<!-- Inputs -->
 				<form action="booking_3.php" method="post" class="d-flex flex-column" style="gap: 48px;" onsubmit="return validateForm()">
 				<div class="d-flex flex-column personal-details">
+
 					<div class="d-flex flex-column" style="gap: 8px;">
 						<div style="width: 100%;">
 							<label for="name">* Name:</label>
@@ -259,7 +255,6 @@ if ($result->num_rows > 0) {
 						</div>
 						<span class="errorMessage" id="contactNumberError"></span>
 					</div>
-
 				
 				</div>
 
@@ -320,7 +315,6 @@ if ($result->num_rows > 0) {
 				</div>
 				</form>
 			</div>
-
 			
 		</div>
 
@@ -333,7 +327,7 @@ if ($result->num_rows > 0) {
 		<div class="container d-flex flex-column">
 			<div class="container footer-wrapper">
 				<div>
-					<img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px">
+					<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px"></a>
 				</div>
 				<div class="d-flex flex-column" style="gap:20px;">
 					<p class="footer-header">Follow Us</p>
@@ -353,7 +347,7 @@ if ($result->num_rows > 0) {
 				<div class="d-flex flex-column" style="gap:20px;">
 					<p class="footer-header">Information</p>
 					<div class="footer-links">
-						<a href="">Home</a>
+						<a href="index.php">Home</a>
 						<a href="">Privacy Policy</a>
 						<a href="">About Flix</a>
 						<a href="">Terms of Service</a>

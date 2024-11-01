@@ -20,13 +20,12 @@
 	<div class="d-flex justify-content-center navbar-wrapper">
 		<nav id="navbar" class="container d-flex flex-row">
 			<div class="d-flex flex-row align-items-center nav-items">
-				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
+				<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
 				<ul class="d-flex flex-row">
-					<li><a href="">All Movies</a></li>
-					<li><a href="">Cinemas</a></li>
+					<a href="all_movies.php"><li>All Movies</li></a>
+					<a href="cinemas.php"><li>Cinemas</li></a>
 				</ul>
 			</div>
-			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
 		</nav>
 	</div>
 
@@ -61,10 +60,6 @@
 							<button class="btn-secondary btn-md cinema-btn">FT City Square</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Funan</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Grand, Great World</button>
-							<!-- <button class="btn-secondary btn-md cinema-btn">FT Plaza</button>
-							<button class="btn-secondary btn-md cinema-btn">FT Suntec City</button>
-							<button class="btn-secondary btn-md cinema-btn">FT Tiong Bahru</button>
-							<button class="btn-secondary btn-md cinema-btn">FT VivoCity</button> -->
 						</div>
 					</div>
 				</div>
@@ -79,7 +74,6 @@
 							<button class="btn-secondary btn-md cinema-btn">FT Bugis+</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Katong</button>
 							<button class="btn-secondary btn-md cinema-btn">FT Paya Lebar</button>
-							<!-- <button class="btn-secondary btn-md cinema-btn">FT Tampines</button> -->
 						</div>
 					</div>
 					<!-- West-->
@@ -113,29 +107,6 @@
 
 			<?php include 'php_files/print_showtimes.php'; ?>
 
-			<!-- Backup just in case
-			<div>
-				<div class="date-container">
-					<div class="date">
-						<h3>17</h3>
-						<p>Sep</p>
-					</div>
-					<p class="date-day">Tues</p>
-				</div>
-
-				<div class="d-flex flex-column justify-content-center showtimes" id="Bishan">
-					<a href=""><button class="btn-showtime">1.30 PM</button></a>
-					<a href=""><button class="btn-showtime">4.35 PM</button></a>
-					<a href=""><button class="btn-showtime">9.25 PM</button></a>
-				</div>
-
-				<div class="d-flex flex-column justify-content-center showtimes" id="Bishan">
-					<a href=""><button class="btn-showtime">1.30 PM</button></a>
-					<a href=""><button class="btn-showtime">4.35 PM</button></a>
-					<a href=""><button class="btn-showtime">9.25 PM</button></a>
-				</div>
-			</div> -->
-
 		</div>
 	</div>
 	
@@ -144,7 +115,7 @@
 		<div class="container d-flex flex-column">
 			<div class="container footer-wrapper">
 				<div>
-					<img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px">
+					<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px"></a>
 				</div>
 				<div class="d-flex flex-column" style="gap:20px;">
 					<p class="footer-header">Follow Us</p>
@@ -164,7 +135,7 @@
 				<div class="d-flex flex-column" style="gap:20px;">
 					<p class="footer-header">Information</p>
 					<div class="footer-links">
-						<a href="">Home</a>
+						<a href="index.php">Home</a>
 						<a href="">Privacy Policy</a>
 						<a href="">About Flix</a>
 						<a href="">Terms of Service</a>

@@ -178,6 +178,7 @@ function filterCinemas() {
 	const cinema_img = document.getElementById('cinema_img');
 	const cinema_directions = document.getElementById('cinema_directions');
 
+  // Change styles for cinema information
 	cinema_name.style.color = "var(--bg-color-black)";
 	cinema_type.innerHTML = "";
 
@@ -202,13 +203,10 @@ function filterCinemas() {
 				img.src = 'assets/cinema-types/premiere-black.svg';
 				cinema_type.appendChild(img);
 			}
+      cinema_img.src = cinema.img;
 
-			// cinema_directions.addEventListener("click", () => handleClick(cinema));
-      // cinema_directions.addEventListener("click", function() {
-      //   window.location.href = 'cinemas.php?cinema=' + encodeURIComponent(cinema.locationName).replace(/%20/g, "+");
-      // });
+      // Update button link
       cinema_directions.addEventListener("click", () => handleClick(cinema.locationName));
-			cinema_img.src = cinema.img;
 
       // Filtering showtimes
       const reset_elements = document.getElementsByClassName('showtimes-movies');
@@ -227,8 +225,7 @@ function filterCinemas() {
 		}
 	});
 
-
-
+  // Default cinema information
 	if (input === 'default') {
 		cinema_name.innerHTML= 'Select your cinema';
 		cinema_name.style.color = "var(--secondary-onwhite-text-color)";

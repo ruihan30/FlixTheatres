@@ -24,6 +24,7 @@ if(isset($_SESSION['cinemas'])) {
 	$cinemas = $_SESSION['cinemas'];
 } 
 
+// Get URL param when directed from all_movies page
 $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 
 ?>
@@ -31,21 +32,20 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 <body>
 
 	<!-- Navbar -->
-	<div class="d-flex justify-content-center" style="width: 100vw; position: sticky;">
+	<div class="d-flex justify-content-center navbar-wrapper">
 		<nav id="navbar" class="container d-flex flex-row">
 			<div class="d-flex flex-row align-items-center nav-items">
-				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
+				<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
 				<ul class="d-flex flex-row">
-					<li><a href="">All Movies</a></li>
-					<li class="active"><a href="">Cinemas</a></li>
+					<a href="all_movies.php"><li>All Movies</li></a>
+					<a href="cinemas.php"><li class="active">Cinemas</li></a>
 				</ul>
 			</div>
-			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
 		</nav>
 	</div>
 
 	<!-- Wrapper -->
-	<div class="container d-flex flex-column align-items-center" style="gap: 28px;">
+	<div class="container d-flex flex-column align-items-center" style="gap: 28px; margin-top: 20px; margin-bottom: 40px;">
 		
 		<div class="d-flex flex-row" style="height: 48px; gap: 28px; width: 780px;">
 			<h2>Flix Theatres in the area: </h2>
@@ -162,6 +162,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						}
 					}
 				} else {
+					// When URL params is empty
 					foreach ($cinemas as $cinema => $cinema_details) {
 						echo "
 						<div class='d-flex flex-row cinema-card-default'>
@@ -212,6 +213,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 			?>
 		</div>
 
+		<!-- Filtered cinemas -->
 		<div class="d-flex flex-row cinema-card" id="cinemaCard1">
 			<div class="cinema-img">
 				<img class="location-img" alt="locationImage1" id="locationImage1">
@@ -373,7 +375,48 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 		</div>
 
 	</div>
-	
+
+	<!-- Footer -->
+	<footer>
+		<div class="container d-flex flex-column">
+			<div class="container footer-wrapper">
+				<div>
+					<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px"></a>
+				</div>
+				<div class="d-flex flex-column" style="gap:20px;">
+					<p class="footer-header">Follow Us</p>
+					<div class="d-flex flex-row" style="gap:12px;">
+						<a href=""><i class='bx bxl-facebook-square icon'></i></a>
+						<a href=""><i class='bx bxl-instagram-alt icon'></i></a>
+						<a href=""><i class='bx bxl-twitter icon'></i></a>
+					</div>
+				</div>
+				<div class="d-flex flex-column" style="gap:20px;">
+					<p class="footer-header">Download our App</p>
+					<div class="d-flex flex-column" style="gap:12px;">
+						<img src="assets/footer/download-apple.png" alt="download" width="140px">
+						<img src="assets/footer/download-google.png" alt="download" width="140px">
+					</div>
+				</div>
+				<div class="d-flex flex-column" style="gap:20px;">
+					<p class="footer-header">Information</p>
+					<div class="footer-links">
+						<a href="index.php">Home</a>
+						<a href="">Privacy Policy</a>
+						<a href="">About Flix</a>
+						<a href="">Terms of Service</a>
+						<a href="">Careers</a>
+						<a href="">Contact Us</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="copyright">
+				Copyright &copy 2024 Flix Theatres Pte. Ltd. All rights reserved.
+			</div>
+		</div>
+	</footer>
+
 </body>
 
 </html>

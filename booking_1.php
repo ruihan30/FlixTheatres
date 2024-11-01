@@ -17,11 +17,13 @@
 
 <?php 
 
+// Get URL params from showtime button
 $title = $_GET['title'];
 $cinema = $_GET['cinema']; 
 $date = $_GET['date']; 
 $time = $_GET['time'];
 
+// Save into session for use in the next steps
 session_start(); 
 $_SESSION['title'] = $title;
 $_SESSION['cinema'] = $cinema;
@@ -72,20 +74,18 @@ if ($result->num_rows > 0) {
 	<div class="d-flex justify-content-center navbar-wrapper">
 		<nav id="navbar" class="container d-flex flex-row">
 			<div class="d-flex flex-row align-items-center nav-items">
-				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
+				<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
 				<ul class="d-flex flex-row">
-					<li><a href="">All Movies</a></li>
-					<li><a href="">Cinemas</a></li>
+					<a href="all_movies.php"><li>All Movies</li></a>
+					<a href="cinemas.php"><li>Cinemas</li></a>
 				</ul>
 			</div>
-			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
 		</nav>
 	</div>
 
 	<!-- Movie Details -->
 	<div class="container d-flex flex-row" style="gap: 20px; margin: 20px 0px 72px 0px;">
 
-		<!-- Maybe session for timing -->
 		<!-- Left -->
 		<div style="width: 360px;">
 			<?php echo "<img src='{$poster_url}' alt='{$title}' class='booking_poster'>"; ?>
@@ -116,6 +116,7 @@ if ($result->num_rows > 0) {
 				<h1><?php echo "{$title}"; ?></h1>
 				<div class="d-flex flex-row" style="gap: 36px;">
 
+					<!-- Display booking information -->
 					<?php 
 						echo "
 						<div class='d-flex flex-column' style='flex-grow: 1; flex-basis: 0; gap: 8px;'>
@@ -172,18 +173,12 @@ if ($result->num_rows > 0) {
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 			<!-- Pricing -->
 			<div class="d-flex flex-column" style="gap: 20px;">
 				<div class="d-flex flex-row align-items-center justify-content-center" style="flex-grow: 1; gap: 24px;">
-					<!-- <p style="color: var(--secondary-onblack-text-color);">Select Ticket Type:</p>
-					<select class="booking-input" id="">
-						<option value="">$19.50 - Standard Ticket</option>
-						<option value="">FT </option>
-						<option value="">FT </option>
-						<option value="">FT </option>
-					</select> -->
 					<button class="btn-secondary btn-md" onclick="clearSeatSelection()" style="border: 1px solid var(--off-white); font-weight: var(--font-weight-regular); width: 300px; cursor: pointer;">
 						Clear All Selections</button>
 				</div>
@@ -215,12 +210,6 @@ if ($result->num_rows > 0) {
 
 			<!-- Buttons -->
 			<div class="d-flex flex-row" style="gap: 16px;">
-				<?php
-				// echo "<a href='booking_2.php?title=". urlencode($title) . "&cinema=" . urlencode($cinema) . 
-				// "&date=" . urlencode(formatDay($showtime)) . "&time=" . urlencode(formatTime($showtime)) .
-				// "' style='width: 100%;'><button onclick=\"gatherSelections()\" class='d-flex flex-row btn-primary btn-lg justify-content-center' style='background-color: var(--primary-color-purple); color: var(--off-white); width: 100%;'
-				// 	>Next Step<i class='bx bx-right-arrow-circle icon' style='font-size: 24px;'></i></button></a>";
-				?>
 				<button onclick="if (validateSeatSelection(event)) gatherSelections();" class='d-flex flex-row btn-coloured btn-lg justify-content-center' style='width: 100%;'
 				>Next Step<i class='bx bx-right-arrow-circle icon' style='font-size: 24px;'></i></button>
 			</div>
@@ -228,13 +217,12 @@ if ($result->num_rows > 0) {
 
 	</div>
 
-	
 	<!-- Footer -->
 	<footer>
 		<div class="container d-flex flex-column">
 			<div class="container footer-wrapper">
 				<div>
-					<img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px">
+					<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px"></a>
 				</div>
 				<div class="d-flex flex-column" style="gap:20px;">
 					<p class="footer-header">Follow Us</p>
@@ -254,7 +242,7 @@ if ($result->num_rows > 0) {
 				<div class="d-flex flex-column" style="gap:20px;">
 					<p class="footer-header">Information</p>
 					<div class="footer-links">
-						<a href="">Home</a>
+						<a href="index.php">Home</a>
 						<a href="">Privacy Policy</a>
 						<a href="">About Flix</a>
 						<a href="">Terms of Service</a>

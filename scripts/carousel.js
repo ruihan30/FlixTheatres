@@ -34,28 +34,28 @@ nextButton.addEventListener('click', () => {
     updateSlidePosition();
 });
 
-// // Auto-scroll functionality
-// function autoScroll() {
-//     if (currentIndex < slides.length - 1) {
-//         currentIndex++;
-//     } else {
-//         currentIndex = 0; // Loop back to the first slide
-//     }
-//     updateSlidePosition();
-// }
+// Auto-scroll functionality
+function autoScroll() {
+    if (currentIndex < slides.length - 1) {
+        currentIndex++;
+    } else {
+        currentIndex = 0; // Loop back to the first slide
+    }
+    updateSlidePosition();
+}
 
-// // Start auto-scrolling every 3 seconds
-// let autoScrollInterval = setInterval(autoScroll, 3000);
+// Start auto-scrolling every 3 seconds
+let autoScrollInterval = setInterval(autoScroll, 3000);
 
-// // Pause auto-scrolling when hovering over the carousel
-// track.addEventListener('mouseenter', () => {
-//     clearInterval(autoScrollInterval);
-// });
+// Pause auto-scrolling when hovering over the carousel
+track.addEventListener('mouseenter', () => {
+    clearInterval(autoScrollInterval);
+});
 
-// // Resume auto-scrolling when not hovering over the carousel
-// track.addEventListener('mouseleave', () => {
-//     autoScrollInterval = setInterval(autoScroll, 3000);
-// });
+// Resume auto-scrolling when not hovering over the carousel
+track.addEventListener('mouseleave', () => {
+    autoScrollInterval = setInterval(autoScroll, 3000);
+});
 
 // Move to the previous slide
 prevButton.addEventListener('click', () => {

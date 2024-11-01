@@ -128,7 +128,7 @@ document.querySelectorAll('.custom-radio').forEach(function(radio) {
 function gatherSelections() {
 	// Gather active seat IDs
 	const selectedSeats = [];
-	const seats = document.querySelectorAll('.seat.active'); // Adjust the selector as necessary
+	const seats = document.querySelectorAll('.seat.active'); 
 	seats.forEach(seat => {
 		selectedSeats.push(seat.dataset.seatId);
 	});
@@ -139,7 +139,7 @@ function gatherSelections() {
 	foodCombos.forEach(combo => {
 		const quantity = parseInt(combo.value);
 		if (quantity > 0) {
-			const comboName = combo.id.replace(/_/g, ' '); // Convert back to original name if necessary
+			const comboName = combo.id.replace(/_/g, ' '); 
 			selectedCombos.push({
 					name: comboName,
 					quantity: quantity
@@ -147,7 +147,7 @@ function gatherSelections() {
 		}
 	});
 
-	// Send data to server (you can use fetch or AJAX)
+	// Send data to server 
 	sendDataToServer(selectedSeats, selectedCombos);
 }
 
@@ -186,7 +186,6 @@ var elements = document.getElementsByClassName(location_name.replace(/ /g, '_'))
 for (var i = 0; i < elements.length; i++) {
 	elements[i].style.display = 'flex'; 
 }
-
 
 buttons.forEach(button => {
   button.addEventListener('click', function() {

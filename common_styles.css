@@ -495,6 +495,12 @@ h1 {
     border: 1px solid var(--bg-color-black);
 }
 
+.cinema-btn.active {
+    color: var(--off-white);
+    background-color: var(--primary-color-purple);
+    border: none;
+}
+
 .selected-cinema {
     background-color: var(--off-white);
     color: var(--bg-color-black);

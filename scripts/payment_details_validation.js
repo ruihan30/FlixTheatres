@@ -9,13 +9,11 @@ function validateForm() {
     chkName({ currentTarget: document.getElementById("name") });
     chkEmail({ currentTarget: document.getElementById("email") });
     chkContactNumber({ currentTarget: document.getElementById("contact") });
-    // chkPaymentMethod({ currentTarget: document.getElementsByName("payment-method") });
 
     // Check if any error messages are present
     const nameError = document.getElementById("nameError").textContent;
     const emailError = document.getElementById("emailError").textContent;
     const contactNumberError = document.getElementById("contactNumberError").textContent;
-    // const paymentMethodError = document.getElementById("paymentMethodError").textContent;
 
     // If any field has an error message, prevent form submission
     if (nameError || emailError || contactNumberError) {
