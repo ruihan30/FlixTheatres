@@ -50,21 +50,4 @@ foreach ($seatsGrid as $rows => $columns) {
   }
 }
 
-
-// echo "<pre>"; 
-// print_r($seatsGrid); 
-// echo "</pre>";
-
-
-// "SELECT sts.seat_number, sts.seat_type, sts.is_available FROM seats sts 
-// JOIN cinema_halls c ON c.hall_id = sts.hall_id
-// JOIN showtimes s ON s.showtime_id = sts.showtime_id
-// JOIN movies m ON m.movie_id = s.movie_id
-// WHERE m.title = 'Alien Romulus' AND
-// s.showtime = '2024-10-26 19:30:00' AND
-// c.location_name = 'FT Bishan'";
-
-
-
-
 ?>

@@ -17,8 +17,6 @@ LEFT JOIN cinema_halls c ON c.hall_id = s.hall_id
 WHERE s.showtime_id IS NOT NULL";
 $result = $conn->query($query);
 
-// print_r($query);
-
 // Save SQL query result in array
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
@@ -53,10 +51,6 @@ if ($result->num_rows > 0) {
     ];
   };
 };
-
-// echo "<pre>"; 
-// print_r($movie_details); 
-// echo "</pre>";
 
 foreach($datesArray as $index => $date) {
   if ($index != 0) {echo "<div class='movieList' style='display: none;' data-date='{$date['full_date']}'>";}

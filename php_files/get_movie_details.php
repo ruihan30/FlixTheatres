@@ -19,8 +19,6 @@ LEFT JOIN cinema_halls c ON c.hall_id = s.hall_id
 WHERE title = '" . $title . "'";
 $result = $conn->query($query);
 
-// print_r($query);
-
 // Save SQL query result in array
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
@@ -55,10 +53,6 @@ if ($result->num_rows > 0) {
     ];
   };
 };
-
-echo "<pre>"; 
-print_r($movie_details); 
-echo "</pre>";
 
 echo "
   <div class='container d-flex flex-row' style='gap: 12px;'>";

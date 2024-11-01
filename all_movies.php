@@ -26,6 +26,7 @@ if(isset($_SESSION['cinemas'])) {
 	$cinemas = $_SESSION['cinemas'];
 } 
 
+// Get URL param when directed from cinemas page
 $default_cinema_name = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 
 foreach ($cinemas as $cinema => $cinema_details) {
@@ -41,6 +42,7 @@ foreach ($cinemas as $cinema => $cinema_details) {
 	}
 }
 
+// Today + 6 days after today
 $datesArray = [];
 $today = new DateTime();
 
@@ -61,30 +63,25 @@ for ($i = 0; $i < 7; $i++) {
   ];
 }
 
-// echo "<pre>"; 
-// print_r($datesArray); 
-// echo "</pre>";
-
 ?>
 
 <body>
 
 	<!-- Navbar -->
-	<div class="d-flex justify-content-center" style="width: 100vw; position: sticky;">
+	<div class="d-flex justify-content-center navbar-wrapper">
 		<nav id="navbar" class="container d-flex flex-row">
 			<div class="d-flex flex-row align-items-center nav-items">
-				<a href="index.html"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
+				<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres"></a>
 				<ul class="d-flex flex-row">
-					<li class="active"><a href="">All Movies</a></li>
-					<li><a href="">Cinemas</a></li>
+					<a href="all_movies.php"><li class="active">All Movies</li></a>
+					<a href="cinemas.php"><li>Cinemas</li></a>
 				</ul>
 			</div>
-			<a href=""><button class="d-flex flex-row btn-primary btn-lg">Book Tickets<i class='bx bxs-chevron-down icon'></i></button></a>
 		</nav>
 	</div>
 
 	<!-- Choose cinema -->
-	<div class="container d-flex flex-column align-items-center" style="gap: 32px;">
+	<div class="container d-flex flex-column align-items-center" style="gap: 32px; margin-top: 20px;">
 		
 		<div class="d-flex flex-row" style="height: 48px; gap: 28px; width: 780px;">
 			<h2>View available showtimes: </h2>
@@ -107,7 +104,7 @@ for ($i = 0; $i < 7; $i++) {
 			</select>
 		</div>
 
-		<!-- Print default cinema if have, else print blank -->
+		<!-- Print URL param cinema if any, else print blank -->
 		<?php
 
 		echo "
@@ -157,6 +154,7 @@ for ($i = 0; $i < 7; $i++) {
 
 		<div class="d-flex flex-column" style="gap:24px;">
 			<div class="d-flex flex-row" style="gap:12px;">
+				<!-- Print tabs for 7 days -->
 				<?php 
 					foreach($datesArray as $index => $date) {
 						if ($index == 0) {
@@ -169,67 +167,52 @@ for ($i = 0; $i < 7; $i++) {
 			</div>
 			
 			<!-- Movie List -->
-			
 			<?php include 'php_files/get_cinema_showtimes.php'; ?>
-			
-			<!-- <div id="movieList">
-				<div class="d-flex flex-column movie-card">
-					<div class="test">img</div>
-
-					<div class="d-flex flex-column movie-details">
-						<div class="d-flex flex-column" style="gap: 4px; width: 100%; flex-grow: 1;"> 
-							<p class="movie-title">Beetlejuice Beetlejuice</p>
-							<p>English (Chinese Subbed)</p>
-						</div>
-							
-						<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%;">
-							<div class="pg-rating pg13">PG13</div>
-							<p class="pg-description">Some frightening scenes & coarse language</p>
-						</div>
-
-						<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%; flex-wrap: wrap;">
-							<a href=""><button class="btn-showtime">1.30 PM</button></a>
-							<a href=""><button class="btn-showtime">4.35 PM</button></a>
-							<a href=""><button class="btn-showtime">9.25 PM</button></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="d-flex flex-column movie-card">
-					<div class="test">img</div>
-
-					<div class="d-flex flex-column movie-details">
-						<div class="d-flex flex-column" style="gap: 4px; width: 100%; flex-grow: 1;"> 
-							<p class="movie-title">Marvel Studios' Deadpool & Wolverine</p>
-							<p>English (Chinese Subbed)</p>
-						</div>
-							
-						<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%;">
-							<div class="pg-rating m18 align-items-center">M18</div>
-							<p class="pg-description">Violence & coarse language</p>
-						</div>
-
-						<div class="d-flex flex-row align-items-center" style="gap: 8px; width: 100%; flex-wrap: wrap;">
-							<a href=""><button class="btn-showtime">2.05 PM</button></a>
-							<a href=""><button class="btn-showtime">5.05 PM</button></a>
-							<a href=""><button class="btn-showtime">7.25 PM</button></a>
-							<a href=""><button class="btn-showtime">10.00 PM</button></a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="test">test</div>
-				<div class="test">test</div>
-				<div class="test">test</div>
-				<div class="test">test</div>
-
-			</div> -->
-
-
 
 		</div>
 
 	</div>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container d-flex flex-column">
+			<div class="container footer-wrapper">
+				<div>
+					<a href="index.php"><img src="assets/flix-logo.svg" alt="Flix Theatres" height="66px"></a>
+				</div>
+				<div class="d-flex flex-column" style="gap:20px;">
+					<p class="footer-header">Follow Us</p>
+					<div class="d-flex flex-row" style="gap:12px;">
+						<a href=""><i class='bx bxl-facebook-square icon'></i></a>
+						<a href=""><i class='bx bxl-instagram-alt icon'></i></a>
+						<a href=""><i class='bx bxl-twitter icon'></i></a>
+					</div>
+				</div>
+				<div class="d-flex flex-column" style="gap:20px;">
+					<p class="footer-header">Download our App</p>
+					<div class="d-flex flex-column" style="gap:12px;">
+						<img src="assets/footer/download-apple.png" alt="download" width="140px">
+						<img src="assets/footer/download-google.png" alt="download" width="140px">
+					</div>
+				</div>
+				<div class="d-flex flex-column" style="gap:20px;">
+					<p class="footer-header">Information</p>
+					<div class="footer-links">
+						<a href="index.php">Home</a>
+						<a href="">Privacy Policy</a>
+						<a href="">About Flix</a>
+						<a href="">Terms of Service</a>
+						<a href="">Careers</a>
+						<a href="">Contact Us</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="copyright">
+				Copyright &copy 2024 Flix Theatres Pte. Ltd. All rights reserved.
+			</div>
+		</div>
+	</footer>
 
 </body>
 
