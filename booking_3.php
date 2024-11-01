@@ -65,6 +65,10 @@ $name = $_POST['name'];
 $email = $_POST['email']; 
 $contact = $_POST['contact'];
 
+$_SESSION['email'] = $email;
+$_SESSION['name'] = $name;
+$_SESSION['contact'] = $contact;
+
 if(!empty($_SESSION)) {
 	// Insert into bookings table
 	$query = 
