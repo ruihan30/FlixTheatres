@@ -200,7 +200,6 @@ if ($result->num_rows > 0) {
 								};
 
 								$total_price += $combo_price * $combo['quantity'];
-								$_SESSION['total_price'] = $total_price;
 
 								echo "
 									<tr class='disabled'>
@@ -209,6 +208,7 @@ if ($result->num_rows > 0) {
 										<td>S$" . number_format($combo_price * $combo['quantity'], 2) . "</td>
 									</tr>";
 							}
+							$_SESSION['total_price'] = $total_price;
 						?>
 						<tr><td></td></tr>
 						<tr>
