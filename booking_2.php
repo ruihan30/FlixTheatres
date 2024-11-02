@@ -318,7 +318,7 @@ if ($result->num_rows > 0) {
 
 	</div>
 
-	<script type="text/javascript" src="payment_details_validationr.js"></script>
+	<script type="text/javascript" src="payment_details_node.js"></script>
 	
 	<!-- Footer -->
 	<footer>

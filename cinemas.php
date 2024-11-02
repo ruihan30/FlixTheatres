@@ -10,7 +10,7 @@
   <link rel="icon" href="assets/flix-favicon.svg" type="image/svg">
 
   <script defer src="general_script.js"></script>
-  <script defer src="scripts/cinemaLocations.js"></script>
+  <script defer src="scripts/cinema_locations.js"></script>
 </head>
 
 <?php 
