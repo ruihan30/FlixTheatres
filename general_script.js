@@ -1,19 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const lenis = new Lenis({
-        duration: 1.1, // duration of the scroll effect
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easing function
-        smooth: true, // enable smooth scrolling
-        smoothTouch: true 
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-});
-
 // Navbar
 document.addEventListener("scroll", function() {
 
@@ -123,8 +107,7 @@ document.querySelectorAll('.custom-radio').forEach(function(radio) {
 	});
 });
 
-
-
+// Gather booking_1 details to send to booking_2 page
 function gatherSelections() {
 	// Gather active seat IDs
 	const selectedSeats = [];
