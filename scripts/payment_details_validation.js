@@ -18,7 +18,18 @@ function validateForm() {
     // If any field has an error message, prevent form submission
     if (nameError || emailError || contactNumberError) {
         // focus and select depending on which one is wrong
-        
+        if (nameError) {
+            document.getElementById("name").focus();
+            document.getElementById("name").select();
+        }
+        if (emailError) {
+            document.getElementById("email").focus();
+            document.getElementById("email").select();
+        }
+        if (contactNumberError) {
+            document.getElementById("contact").focus();
+            document.getElementById("contact").select();
+        }
         return false; // Prevent form submission
     }
 
@@ -28,6 +39,7 @@ function validateForm() {
 
 function chkName(event){
     var myName = event.currentTarget;
+    // allows for first instance of capital + name, followed by >1 instance of space, capital + name
     var pos = myName.value.search(/^(?:[A-Z][a-z]*(?:\s[A-Z][a-z]*)*)?$/);
     var nameError = document.getElementById("nameError");
 
@@ -42,7 +54,10 @@ function chkName(event){
 
 function chkEmail(event){
     var myEmail = event.currentTarget;
-    var pos = myEmail.value.search(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,3}$/);
+    // prevent 2 consecutive periods, alphanumerical + special characters (local),
+    // alphanumeric + dots, hyphens (domain), ensure domain does not end with period,
+    // at least 2 alphabetical for top-level domain
+    var pos = myEmail.value.search(/^(?!.*\.{2})[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(?<!\.)\.[a-zA-Z]{2,}$/);
     var emailError = document.getElementById("emailError");
 
     if (pos != 0){

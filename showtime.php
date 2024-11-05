@@ -10,6 +10,7 @@
   <link rel="icon" href="assets/flix-favicon.svg" type="image/svg">
 
   <script defer src="general_script.js"></script>
+	<script defer src="scripts/showtime.js"></script>
 </head>
 
 <body>

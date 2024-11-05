@@ -10,6 +10,7 @@
   <link rel="icon" href="assets/flix-favicon.svg" type="image/svg">
 
   <script defer src="general_script.js"></script>
+	<script src="scripts/booking_1.js"></script>
   <script src="scripts/seat_validation.js"></script>
 </head>
 

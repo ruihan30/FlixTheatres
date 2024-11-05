@@ -548,12 +548,15 @@ h2 {
 #cinemasFilter {
     padding: 0px 16px;
     border: none;
-    background-color: var(--off-white);
+    background-color: var(--off-white) !important;
     font-family: 'Outfit';
     font-size: var(--font-size-sm-md-18);
     font-weight: var(--font-weight-medium);
     appearance: none;
     flex-grow: 1;
+    background: url('assets/bx-chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
 }
 
 .cinema-card {
@@ -705,7 +708,6 @@ table tr.disabled {
     appearance: none;
     -moz-appearance: textfield;
     -webkit-appearance: none;
-    appearance: none;
     border:none;
 }
 

@@ -73,7 +73,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 											<h3>{$cinema_details['locationName']}</h3>
 											<p>{$cinema_details['address']}</p>
 											<div class='d-flex flex-row' style='gap: 16px;'>
-												<p>{$cinema_details['halls']}</p><p>|</p>
+												
 													<div class='d-flex flex-row cinemaTypes' style='gap: 8px; flex-wrap: wrap;'>";
 														if ($cinema_details['IMAX']) {
 															echo "<img src='assets/cinema-types/imax-white.svg'>";
@@ -123,7 +123,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 											<h3>{$cinema_details['locationName']}</h3>
 											<p>{$cinema_details['address']}</p>
 											<div class='d-flex flex-row' style='gap: 16px;'>
-												<p>{$cinema_details['halls']}</p><p>|</p>
+												
 													<div class='d-flex flex-row cinemaTypes' style='gap: 8px; flex-wrap: wrap;'>";
 														if ($cinema_details['IMAX']) {
 															echo "<img src='assets/cinema-types/imax-white.svg'>";
@@ -172,7 +172,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 										<h3>{$cinema_details['locationName']}</h3>
 										<p>{$cinema_details['address']}</p>
 										<div class='d-flex flex-row' style='gap: 16px;'>
-											<p>{$cinema_details['halls']}</p><p>|</p>
+											
 												<div class='d-flex flex-row cinemaTypes' style='gap: 8px; flex-wrap: wrap;'>";
 													if ($cinema_details['IMAX']) {
 														echo "<img src='assets/cinema-types/imax-white.svg'>";
@@ -223,7 +223,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						<h3 id="locationName1"></h3>
 						<p id="cinemaAddress1"></p>
 						<div class="d-flex flex-row" style="gap: 16px;">
-							<p id="cinemaHalls1"></p><p>|</p>
+							<!-- <p id="cinemaHalls1"></p><p>|</p> -->
 								<div class="d-flex flex-row cinemaTypes" style="gap: 8px; flex-wrap: wrap;">
 									<img alt="cinemaTypeIMAX1" id="cinemaTypeIMAX1">
 									<img alt="cinemaTypesLUMIERE1" id="cinemaTypeLUMIERE1">
@@ -263,7 +263,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						<h3 id="locationName2"></h3>
 						<p id="cinemaAddress2"></p>
 						<div class="d-flex flex-row" style="gap: 16px;">
-							<p id="cinemaHalls2"></p><p>|</p>
+							<!-- <p id="cinemaHalls2"></p><p>|</p> -->
 								<div class="d-flex flex-row cinemaTypes" style="gap: 8px; flex-wrap: wrap;">
 									<img alt="cinemaTypeIMAX2" id="cinemaTypeIMAX2">
 									<img alt="cinemaTypesLUMIERE2" id="cinemaTypeLUMIERE2">
@@ -303,7 +303,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						<h3 id="locationName3"></h3>
 						<p id="cinemaAddress3"></p>
 						<div class="d-flex flex-row" style="gap: 16px;">
-							<p id="cinemaHalls3"></p><p>|</p>
+							<!-- <p id="cinemaHalls3"></p><p>|</p> -->
 								<div class="d-flex flex-row cinemaTypes" style="gap: 8px; flex-wrap: wrap;">
 									<img alt="cinemaTypeIMAX3" id="cinemaTypeIMAX3">
 									<img alt="cinemaTypesLUMIERE3" id="cinemaTypeLUMIERE3">
@@ -343,7 +343,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						<h3 id="locationName4"></h3>
 						<p id="cinemaAddress4"></p>
 						<div class="d-flex flex-row" style="gap: 16px;">
-							<p id="cinemaHalls4"></p><p>|</p>
+							<!-- <p id="cinemaHalls4"></p><p>|</p> -->
 								<div class="d-flex flex-row cinemaTypes" style="gap: 8px; flex-wrap: wrap;">
 									<img alt="cinemaTypeIMAX4" id="cinemaTypeIMAX4">
 									<img alt="cinemaTypesLUMIERE4" id="cinemaTypeLUMIERE4">

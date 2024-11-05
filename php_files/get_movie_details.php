@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
 
     $movie_details[$row['title']]['showtimes'][$showtime_date][$row['location_name']][] = [
       'cinema_type' => $row['cinema_type'],
-      'hall_name' => $row['hall_name'],
+      // 'hall_name' => $row['hall_name'],
       'showtime' => $row['showtime'],
     ];
   };

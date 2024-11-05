@@ -11,6 +11,7 @@
 
   <script defer src="general_script.js"></script>
 	<script defer src="scripts/payment_details_validation.js"></script>
+	<script defer src="scripts/booking_2.js"></script>
 </head>
 
 <?php 

@@ -23,7 +23,6 @@ CREATE TABLE movies (
 CREATE TABLE cinema_halls (
     hall_id INT PRIMARY KEY AUTO_INCREMENT,
     location_name VARCHAR(100),
-    hall_name VARCHAR(50) NOT NULL,
     cinema_type VARCHAR(50) NOT NULL
 );
 
