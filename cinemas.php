@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flix Theatres</title>
+  <title>Our Cinemas - Find Flix Theatres Near You</title>
   <meta charset="utf-8">
 	<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit:400,500,600,700">
   <link rel="stylesheet" href="common_styles.css">
   <link rel="icon" href="assets/flix-favicon.svg" type="image/svg">
-  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
 
-  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script> 
   <script defer src="general_script.js"></script>
-  <script defer src="scripts/cinemaLocations.js"></script>
+  <script defer src="scripts/cinema_locations.js"></script>
 </head>
 
 <?php 
@@ -75,7 +73,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 											<h3>{$cinema_details['locationName']}</h3>
 											<p>{$cinema_details['address']}</p>
 											<div class='d-flex flex-row' style='gap: 16px;'>
-												<p>{$cinema_details['halls']}</p><p>|</p>
+												
 													<div class='d-flex flex-row cinemaTypes' style='gap: 8px; flex-wrap: wrap;'>";
 														if ($cinema_details['IMAX']) {
 															echo "<img src='assets/cinema-types/imax-white.svg'>";
@@ -125,7 +123,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 											<h3>{$cinema_details['locationName']}</h3>
 											<p>{$cinema_details['address']}</p>
 											<div class='d-flex flex-row' style='gap: 16px;'>
-												<p>{$cinema_details['halls']}</p><p>|</p>
+												
 													<div class='d-flex flex-row cinemaTypes' style='gap: 8px; flex-wrap: wrap;'>";
 														if ($cinema_details['IMAX']) {
 															echo "<img src='assets/cinema-types/imax-white.svg'>";
@@ -174,7 +172,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 										<h3>{$cinema_details['locationName']}</h3>
 										<p>{$cinema_details['address']}</p>
 										<div class='d-flex flex-row' style='gap: 16px;'>
-											<p>{$cinema_details['halls']}</p><p>|</p>
+											
 												<div class='d-flex flex-row cinemaTypes' style='gap: 8px; flex-wrap: wrap;'>";
 													if ($cinema_details['IMAX']) {
 														echo "<img src='assets/cinema-types/imax-white.svg'>";
@@ -225,7 +223,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						<h3 id="locationName1"></h3>
 						<p id="cinemaAddress1"></p>
 						<div class="d-flex flex-row" style="gap: 16px;">
-							<p id="cinemaHalls1"></p><p>|</p>
+							<!-- <p id="cinemaHalls1"></p><p>|</p> -->
 								<div class="d-flex flex-row cinemaTypes" style="gap: 8px; flex-wrap: wrap;">
 									<img alt="cinemaTypeIMAX1" id="cinemaTypeIMAX1">
 									<img alt="cinemaTypesLUMIERE1" id="cinemaTypeLUMIERE1">
@@ -265,7 +263,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						<h3 id="locationName2"></h3>
 						<p id="cinemaAddress2"></p>
 						<div class="d-flex flex-row" style="gap: 16px;">
-							<p id="cinemaHalls2"></p><p>|</p>
+							<!-- <p id="cinemaHalls2"></p><p>|</p> -->
 								<div class="d-flex flex-row cinemaTypes" style="gap: 8px; flex-wrap: wrap;">
 									<img alt="cinemaTypeIMAX2" id="cinemaTypeIMAX2">
 									<img alt="cinemaTypesLUMIERE2" id="cinemaTypeLUMIERE2">
@@ -305,7 +303,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						<h3 id="locationName3"></h3>
 						<p id="cinemaAddress3"></p>
 						<div class="d-flex flex-row" style="gap: 16px;">
-							<p id="cinemaHalls3"></p><p>|</p>
+							<!-- <p id="cinemaHalls3"></p><p>|</p> -->
 								<div class="d-flex flex-row cinemaTypes" style="gap: 8px; flex-wrap: wrap;">
 									<img alt="cinemaTypeIMAX3" id="cinemaTypeIMAX3">
 									<img alt="cinemaTypesLUMIERE3" id="cinemaTypeLUMIERE3">
@@ -345,7 +343,7 @@ $first_cinema = isset($_GET['cinema']) ? $_GET['cinema'] : null;
 						<h3 id="locationName4"></h3>
 						<p id="cinemaAddress4"></p>
 						<div class="d-flex flex-row" style="gap: 16px;">
-							<p id="cinemaHalls4"></p><p>|</p>
+							<!-- <p id="cinemaHalls4"></p><p>|</p> -->
 								<div class="d-flex flex-row cinemaTypes" style="gap: 8px; flex-wrap: wrap;">
 									<img alt="cinemaTypeIMAX4" id="cinemaTypeIMAX4">
 									<img alt="cinemaTypesLUMIERE4" id="cinemaTypeLUMIERE4">

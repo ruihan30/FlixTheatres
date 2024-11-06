@@ -180,7 +180,7 @@ function cinemasInArea(){
         for (let i = 1; i <= 4; i++) {
             const locationName = cinemaDetails[`locationName${i}`];
             const cinemaAddress = cinemaDetails[`cinemaAddress${i}`];
-            const cinemaHalls = cinemaDetails[`cinemaHalls${i}`];
+            // const cinemaHalls = cinemaDetails[`cinemaHalls${i}`];
             const nearestMRT = cinemaDetails[`nearestMRT${i}`];
             const busServices = cinemaDetails[`busServices${i}`];
             const locationImage = cinemaDetails[`locationImage${i}`];
@@ -193,10 +193,10 @@ function cinemasInArea(){
 			const button = document.getElementsByClassName('cinema-showtime-btn')[i-1];
 			button.href = 'all_movies.php?cinema=' + encodeURIComponent(locationName).replace(/%20/g, "+");
 
-            if (locationName && cinemaAddress && cinemaHalls && nearestMRT && busServices && locationImage) {
+            if (locationName && cinemaAddress && nearestMRT && busServices && locationImage) {
                 document.getElementById(`locationName${i}`).innerHTML = locationName;
                 document.getElementById(`cinemaAddress${i}`).innerHTML = cinemaAddress;
-                document.getElementById(`cinemaHalls${i}`).innerHTML = cinemaHalls;
+                // document.getElementById(`cinemaHalls${i}`).innerHTML = cinemaHalls;
                 document.getElementById(`nearestMRT${i}`).innerHTML = nearestMRT;
                 document.getElementById(`busServices${i}`).innerHTML = busServices;
                 document.getElementById(`locationImage${i}`).src = locationImage;

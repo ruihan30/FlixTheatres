@@ -1,6 +1,7 @@
 <?php 
   $datesArray = [];
-  $today = new DateTime();
+  // $today = new DateTime();
+  $today = new DateTime('2024-11-06');
   
   for ($i = 0; $i < 7; $i++) {
     $currentDate = clone $today;

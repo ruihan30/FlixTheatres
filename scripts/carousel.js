@@ -34,6 +34,16 @@ nextButton.addEventListener('click', () => {
     updateSlidePosition();
 });
 
+// Move to the previous slide
+prevButton.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+    } else {
+        currentIndex = slides.length - 1;
+    }
+    updateSlidePosition();
+});
+
 // Auto-scroll functionality
 function autoScroll() {
     if (currentIndex < slides.length - 1) {
@@ -55,16 +65,6 @@ track.addEventListener('mouseenter', () => {
 // Resume auto-scrolling when not hovering over the carousel
 track.addEventListener('mouseleave', () => {
     autoScrollInterval = setInterval(autoScroll, 3000);
-});
-
-// Move to the previous slide
-prevButton.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-    } else {
-        currentIndex = slides.length - 1;
-    }
-    updateSlidePosition();
 });
 
 // Initial slide setup

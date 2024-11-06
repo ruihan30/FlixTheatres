@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
 
     $movie_details[$row['title']]['showtimes'][$showtime_date][$row['location_name']][] = [
       'cinema_type' => $row['cinema_type'],
-      'hall_name' => $row['hall_name'],
+      // 'hall_name' => $row['hall_name'],
       'showtime' => $row['showtime'],
     ];
   };
@@ -64,7 +64,7 @@ foreach($datesArray as $index => $date) {
       <img style='width: 100%, height: auto;' src='{$details['poster_url']}' alt='{$title}'>
 
       <div class='d-flex flex-column movie-details'>
-        <div class='d-flex flex-column' style='gap: 4px; width: 100%; flex-grow: 1;'> 
+        <div class='d-flex flex-column' style='gap: 4px; width: 100%;'> 
           <p class='movie-title'>{$title}</p>
           <p>{$details['language']}</p>
         </div>

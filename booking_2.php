@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flix Theatres</title>
+  <title>Confirm your booking details - Flix Theatres Booking</title>
   <meta charset="utf-8">
 	<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit:400,500,600,700">
   <link rel="stylesheet" href="common_styles.css">
   <link rel="icon" href="assets/flix-favicon.svg" type="image/svg">
-  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
 
-  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script> 
   <script defer src="general_script.js"></script>
 	<script defer src="scripts/payment_details_validation.js"></script>
+	<script defer src="scripts/booking_2.js"></script>
 </head>
 
 <?php 
@@ -320,7 +319,7 @@ if ($result->num_rows > 0) {
 
 	</div>
 
-	<script type="text/javascript" src="payment_details_validationr.js"></script>
+	<script type="text/javascript" src="payment_details_node.js"></script>
 	
 	<!-- Footer -->
 	<footer>
