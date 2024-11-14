@@ -42,7 +42,8 @@ foreach ($cinemas as $cinema => $cinema_details) {
 
 // Today + 6 days after today
 $datesArray = [];
-$today = new DateTime();
+// $today = new DateTime();
+$today = new DateTime('2024-11-06');
 
 for ($i = 0; $i < 7; $i++) {
   $currentDate = clone $today;
